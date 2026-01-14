@@ -1,20 +1,23 @@
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin } from "lucide-react";
 import { siteConfig } from "@/lib/config";
-
-const footerLinks = {
-  product: [
-    { label: "Features", href: "/product" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Use Cases", href: "/product#use-cases" },
-  ],
-  company: [
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
-  ],
-};
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Footer() {
+  const { t } = useLanguage();
+
+  const footerLinks = {
+    product: [
+      { label: t("footer.features"), href: "/product" },
+      { label: t("nav.pricing"), href: "/pricing" },
+      { label: t("footer.useCases"), href: "/product#use-cases" },
+    ],
+    company: [
+      { label: t("nav.about"), href: "/about" },
+      { label: t("nav.contact"), href: "/contact" },
+    ],
+  };
+
   return (
     <footer className="border-t border-border bg-surface-subtle">
       <div className="container mx-auto px-4 py-12 lg:px-8 lg:py-16">
@@ -27,7 +30,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-md text-muted-foreground">
-              {siteConfig.tagline}
+              {t("footer.tagline")}
             </p>
             <div className="mt-6 flex gap-4">
               <a
@@ -54,7 +57,7 @@ export function Footer() {
           {/* Product links */}
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
-              Product
+              {t("footer.productLinks")}
             </h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
@@ -73,7 +76,7 @@ export function Footer() {
           {/* Company links */}
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
-              Company
+              {t("footer.companyLinks")}
             </h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
@@ -91,14 +94,9 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-border pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Omnyo. All rights reserved.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Built for hospitality, retail, and logistics teams.
-            </p>
-          </div>
+          <p className="text-center text-sm text-muted-foreground">
+            {t("common.copyrightNotice")}
+          </p>
         </div>
       </div>
     </footer>

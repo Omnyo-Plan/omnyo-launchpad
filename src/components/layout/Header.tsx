@@ -4,19 +4,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useThemeContext } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/product", label: "Product" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/about", label: "About" },
-];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useThemeContext();
+  const { t } = useLanguage();
   const location = useLocation();
+
+  const navLinks = [
+    { href: "/", label: t("nav.home") },
+    { href: "/product", label: t("nav.product") },
+    { href: "/pricing", label: t("nav.pricing") },
+    { href: "/about", label: t("nav.about") },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-lg">
@@ -54,6 +57,8 @@ export function Header() {
 
         {/* Right side actions */}
         <div className="flex items-center gap-2">
+          <LanguageToggle className="hidden sm:flex" />
+          
           <Button
             variant="ghost"
             size="icon"
@@ -70,7 +75,7 @@ export function Header() {
 
           <Link to="/contact" className="hidden md:block">
             <Button variant="hero" size="default">
-              Get Early Access
+              {t("nav.getEarlyAccess")}
             </Button>
           </Link>
 
@@ -97,6 +102,9 @@ export function Header() {
             className="border-t border-border bg-background md:hidden"
           >
             <div className="container mx-auto flex flex-col gap-2 px-4 py-4">
+              <div className="mb-2 flex justify-center">
+                <LanguageToggle />
+              </div>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -118,7 +126,7 @@ export function Header() {
                 className="mt-2"
               >
                 <Button variant="hero" className="w-full">
-                  Get Early Access
+                  {t("nav.getEarlyAccess")}
                 </Button>
               </Link>
             </div>
