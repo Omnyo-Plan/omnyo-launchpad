@@ -5,34 +5,51 @@ import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
-
-const pilotIncludes = [
-  "Full access to schedule builder",
-  "Employee mobile app",
-  "Real-time notifications",
-  "AI-assisted scheduling suggestions",
-  "Dedicated onboarding support",
-  "Multi-location support",
-  "Availability management",
-  "Team announcements",
-];
-
-const whoItsFor = [
-  "Hospitality businesses (cafés, restaurants, hotels)",
-  "Retail operations (stores, boutiques, chains)",
-  "Logistics and warehousing teams",
-  "Any business with 5+ shift-based employees",
-];
+import { useLanguage } from "@/contexts/LanguageContext";
+import { siteConfig } from "@/lib/config";
 
 export default function Pricing() {
+  const { t, language } = useLanguage();
+
+  const pilotIncludes = [
+    t("pricing.includes.scheduleBuilder"),
+    t("pricing.includes.mobileApp"),
+    t("pricing.includes.notifications"),
+    t("pricing.includes.onboarding"),
+    t("pricing.includes.multiLocation"),
+    t("pricing.includes.availability"),
+    t("pricing.includes.announcements"),
+  ];
+
+  const whoItsFor = [
+    t("pricing.whoItsFor.hospitality"),
+    t("pricing.whoItsFor.retail"),
+    t("pricing.whoItsFor.logistics"),
+    t("pricing.whoItsFor.shiftBased"),
+  ];
+
+  const metaTitle = language === "en"
+    ? "Pricing — Early Access Program | Omnyo"
+    : "Τιμολόγηση — Πρόγραμμα Πρόωρης Πρόσβασης | Omnyo";
+
+  const metaDescription = language === "en"
+    ? "Join Omnyo's early access pilot program. Full features, dedicated support for early adopters."
+    : "Εγγραφείτε στο πιλοτικό πρόγραμμα πρόωρης πρόσβασης του Omnyo. Πλήρη χαρακτηριστικά, αφοσιωμένη υποστήριξη για πρώτους χρήστες.";
+
   return (
     <Layout>
       <Helmet>
-        <title>Pricing — Early Access Program | Omnyo</title>
-        <meta
-          name="description"
-          content="Join Omnyo's early access pilot program. Full features, dedicated support, and preferential pricing for early adopters."
-        />
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteConfig.url}/pricing`} />
+        <meta property="og:image" content={`${siteConfig.url}/og-image.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metaTitle} />
+        <meta name="twitter:description" content={metaDescription} />
+        <meta name="twitter:image" content={`${siteConfig.url}/og-image.png`} />
       </Helmet>
 
       {/* Hero */}
@@ -44,13 +61,13 @@ export default function Pricing() {
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
             <span className="inline-block h-2 w-2 rounded-full bg-primary animate-pulse" />
-            Early Access Program
+            {t("pricing.tag")}
           </div>
           <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
-            Join our pilot program
+            {t("pricing.heroTitle")}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            We're working closely with early adopters to build the best shift management platform. Join us and help shape the future of Omnyo.
+            {t("pricing.heroSubtitle")}
           </p>
         </motion.div>
       </Section>
@@ -65,17 +82,14 @@ export default function Pricing() {
             className="overflow-hidden rounded-2xl border border-border bg-card shadow-lg"
           >
             <div className="border-b border-border bg-primary/5 p-8 text-center">
-              <h2 className="text-2xl font-bold text-foreground">Pilot Program</h2>
-              <p className="mt-2 text-muted-foreground">Full access for early adopters</p>
+              <h2 className="text-2xl font-bold text-foreground">{t("pricing.pilotProgram")}</h2>
+              <p className="mt-2 text-muted-foreground">{t("pricing.fullAccess")}</p>
               <div className="mt-6">
-                <span className="text-4xl font-bold text-foreground">Contact Us</span>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Preferential pricing for pilot participants
-                </p>
+                <span className="text-4xl font-bold text-foreground">{t("common.contactUs")}</span>
               </div>
             </div>
             <div className="p-8">
-              <h3 className="mb-4 font-semibold text-foreground">What's included:</h3>
+              <h3 className="mb-4 font-semibold text-foreground">{t("pricing.whatsIncluded")}</h3>
               <ul className="space-y-3">
                 {pilotIncludes.map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -88,7 +102,7 @@ export default function Pricing() {
               </ul>
               <Link to="/contact" className="mt-8 block">
                 <Button variant="hero" size="xl" className="w-full">
-                  Apply for Early Access
+                  {t("common.applyForEarlyAccess")}
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
@@ -100,8 +114,8 @@ export default function Pricing() {
       {/* Who it's for */}
       <Section variant="muted">
         <SectionHeader
-          title="Who is the pilot program for?"
-          subtitle="We're looking for forward-thinking teams ready to modernize their scheduling."
+          title={t("pricing.whoIsItFor")}
+          subtitle={t("pricing.whoIsItForSubtitle")}
         />
         <div className="mx-auto max-w-2xl">
           <motion.ul
@@ -138,10 +152,10 @@ export default function Pricing() {
             viewport={{ once: true }}
           >
             <h2 className="text-2xl font-bold text-foreground">
-              Why early access?
+              {t("pricing.whyEarlyAccess")}
             </h2>
             <p className="mt-4 text-muted-foreground">
-              We believe the best products are built alongside real users. As an early adopter, you'll get direct input into feature development, priority support, and pricing that reflects your partnership in building Omnyo.
+              {t("pricing.whyEarlyAccessText")}
             </p>
           </motion.div>
         </div>
@@ -155,15 +169,15 @@ export default function Pricing() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Ready to get started?
+            {t("pricing.ctaTitle")}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Let's talk about how Omnyo can work for your team.
+            {t("pricing.ctaSubtitle")}
           </p>
           <div className="mt-8 flex justify-center">
             <Link to="/contact">
               <Button variant="hero" size="xl">
-                Contact Us
+                {t("common.contactUs")}
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>

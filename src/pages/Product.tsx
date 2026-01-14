@@ -1,86 +1,103 @@
 import { motion } from "framer-motion";
-import { Calendar, Users, Bell, Sparkles, ArrowRight, Smartphone, RefreshCw, Shield, BarChart3 } from "lucide-react";
+import { Calendar, Users, Bell, Sparkles, ArrowRight, Smartphone, RefreshCw } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { FeatureCard } from "@/components/ui/feature-card";
 import { Button } from "@/components/ui/button";
-
-const managerFeatures = [
-  {
-    icon: Calendar,
-    title: "Visual Schedule Builder",
-    description: "Create weekly or monthly schedules per location and role. Drag-and-drop interface makes planning intuitive.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Smart Regeneration",
-    description: "Last-minute sick call? The system suggests alternatives and regenerates optimized schedules automatically.",
-  },
-  {
-    icon: BarChart3,
-    title: "Coverage Insights",
-    description: "See at a glance if you have gaps or overstaffing. Catch issues before they become problems.",
-  },
-  {
-    icon: Bell,
-    title: "Automated Notifications",
-    description: "Schedule changes, shift reminders, and approvals are sent automatically. No more manual follow-ups.",
-  },
-];
-
-const employeeFeatures = [
-  {
-    icon: Smartphone,
-    title: "Always-On Mobile Access",
-    description: "See your schedule anytime, anywhere. No more checking photos of paper schedules in WhatsApp.",
-  },
-  {
-    icon: Bell,
-    title: "Instant Updates",
-    description: "Get notified immediately when your schedule changes. Never miss a shift or show up on the wrong day.",
-  },
-  {
-    icon: Calendar,
-    title: "Submit Availability",
-    description: "Share your preferences and availability. Managers can factor in your needs when creating schedules.",
-  },
-  {
-    icon: Users,
-    title: "Team Announcements",
-    description: "Important updates, meetings, and company news—all in one place. No more scattered group chats.",
-  },
-];
-
-const aiFeatures = [
-  {
-    title: "Understands Your Business",
-    description: "Our AI considers opening hours, expected customer traffic, and required roles for each shift.",
-  },
-  {
-    title: "Respects Employee Preferences",
-    description: "Availability windows, maximum hours, and time-off requests are automatically factored in.",
-  },
-  {
-    title: "Optimizes for Fairness",
-    description: "Balances workloads so no one is overworked or underutilized. Transparent and equitable.",
-  },
-  {
-    title: "Adapts to Changes",
-    description: "When things change, AI suggests new arrangements without starting from scratch.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
+import { siteConfig } from "@/lib/config";
 
 export default function Product() {
+  const { t, language } = useLanguage();
+
+  const managerFeatures = [
+    {
+      icon: Calendar,
+      title: t("product.managerFeatures.visualBuilder.title"),
+      description: t("product.managerFeatures.visualBuilder.description"),
+    },
+    {
+      icon: RefreshCw,
+      title: t("product.managerFeatures.smartRegeneration.title"),
+      description: t("product.managerFeatures.smartRegeneration.description"),
+    },
+    {
+      icon: Bell,
+      title: t("product.managerFeatures.automatedNotifications.title"),
+      description: t("product.managerFeatures.automatedNotifications.description"),
+    },
+  ];
+
+  const employeeFeatures = [
+    {
+      icon: Smartphone,
+      title: t("product.employeeFeatures.mobileAccess.title"),
+      description: t("product.employeeFeatures.mobileAccess.description"),
+    },
+    {
+      icon: Bell,
+      title: t("product.employeeFeatures.instantUpdates.title"),
+      description: t("product.employeeFeatures.instantUpdates.description"),
+    },
+    {
+      icon: Calendar,
+      title: t("product.employeeFeatures.submitAvailability.title"),
+      description: t("product.employeeFeatures.submitAvailability.description"),
+    },
+    {
+      icon: Users,
+      title: t("product.employeeFeatures.teamAnnouncements.title"),
+      description: t("product.employeeFeatures.teamAnnouncements.description"),
+    },
+  ];
+
+  const aiFeatures = [
+    {
+      title: t("product.aiFeatures.understands.title"),
+      description: t("product.aiFeatures.understands.description"),
+    },
+    {
+      title: t("product.aiFeatures.respects.title"),
+      description: t("product.aiFeatures.respects.description"),
+    },
+    {
+      title: t("product.aiFeatures.optimizes.title"),
+      description: t("product.aiFeatures.optimizes.description"),
+    },
+    {
+      title: t("product.aiFeatures.adapts.title"),
+      description: t("product.aiFeatures.adapts.description"),
+    },
+  ];
+
+  const metaTitle = language === "en"
+    ? "Product — How Omnyo Works | Shift Management Features"
+    : "Προϊόν — Πώς Λειτουργεί το Omnyo | Χαρακτηριστικά Διαχείρισης Βαρδιών";
+
+  const metaDescription = language === "en"
+    ? "Discover how Omnyo simplifies shift scheduling for managers and employees. Visual builder, real-time notifications, and mobile access."
+    : "Ανακαλύψτε πώς το Omnyo απλοποιεί τον προγραμματισμό βαρδιών για διευθυντές και εργαζόμενους. Οπτικός δημιουργός, ειδοποιήσεις σε πραγματικό χρόνο και πρόσβαση από κινητό.";
+
+  const days = language === "en" 
+    ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    : ["Δευ", "Τρι", "Τετ", "Πεμ", "Παρ", "Σαβ", "Κυρ"];
+
   return (
     <Layout>
       <Helmet>
-        <title>Product — How Omnyo Works | Shift Management Features</title>
-        <meta
-          name="description"
-          content="Discover how Omnyo simplifies shift scheduling for managers and employees. Visual builder, AI suggestions, real-time notifications, and mobile access."
-        />
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteConfig.url}/product`} />
+        <meta property="og:image" content={`${siteConfig.url}/og-image.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metaTitle} />
+        <meta name="twitter:description" content={metaDescription} />
+        <meta name="twitter:image" content={`${siteConfig.url}/og-image.png`} />
       </Helmet>
 
       {/* Hero */}
@@ -91,10 +108,10 @@ export default function Product() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
-            Built for the way you actually work
+            {t("product.heroTitle")}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            Omnyo combines intuitive scheduling tools with smart automation. Managers save time, employees stay informed, and everyone stays in sync.
+            {t("product.heroSubtitle")}
           </p>
         </motion.div>
       </Section>
@@ -102,10 +119,10 @@ export default function Product() {
       {/* Manager Experience */}
       <Section>
         <SectionHeader
-          title="For Managers"
-          subtitle="Create, adjust, and communicate schedules in minutes—not hours."
+          title={t("product.forManagers")}
+          subtitle={t("product.forManagersSubtitle")}
         />
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-3">
           {managerFeatures.map((feature, i) => (
             <FeatureCard key={feature.title} {...feature} delay={i * 0.1} />
           ))}
@@ -123,11 +140,11 @@ export default function Product() {
               <div className="h-3 w-3 rounded-full bg-red-400" />
               <div className="h-3 w-3 rounded-full bg-yellow-400" />
               <div className="h-3 w-3 rounded-full bg-green-400" />
-              <span className="ml-4 text-sm text-muted-foreground">Schedule Builder — Week of Jan 20</span>
+              <span className="ml-4 text-sm text-muted-foreground">{t("product.mockup.scheduleBuilder")}</span>
             </div>
             <div className="p-6">
               <div className="grid grid-cols-7 gap-2 text-center text-sm">
-                {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
+                {days.map((day) => (
                   <div key={day} className="py-2 font-medium text-muted-foreground">{day}</div>
                 ))}
                 {Array.from({ length: 7 }).map((_, i) => (
@@ -159,8 +176,8 @@ export default function Product() {
       {/* Employee Experience */}
       <Section variant="muted">
         <SectionHeader
-          title="For Employees"
-          subtitle="Your personal hub for schedules, updates, and team communication."
+          title={t("product.forEmployees")}
+          subtitle={t("product.forEmployeesSubtitle")}
         />
         <div className="grid gap-6 md:grid-cols-2">
           {employeeFeatures.map((feature, i) => (
@@ -178,29 +195,29 @@ export default function Product() {
           <div className="w-[280px] rounded-[40px] border-8 border-foreground/10 bg-card p-2 shadow-xl">
             <div className="rounded-[32px] bg-background p-4">
               <div className="mb-4 flex items-center justify-between">
-                <span className="font-semibold text-foreground">My Schedule</span>
+                <span className="font-semibold text-foreground">{t("product.mockup.mySchedule")}</span>
                 <Bell className="h-5 w-5 text-muted-foreground" />
               </div>
               <div className="space-y-3">
                 <div className="rounded-xl bg-primary/10 p-3">
-                  <div className="text-xs text-muted-foreground">Today</div>
+                  <div className="text-xs text-muted-foreground">{t("product.mockup.today")}</div>
                   <div className="mt-1 font-medium text-foreground">2:00 PM – 10:00 PM</div>
                   <div className="text-sm text-muted-foreground">Main Store • Cashier</div>
                 </div>
                 <div className="rounded-xl border border-border bg-card p-3">
-                  <div className="text-xs text-muted-foreground">Tomorrow</div>
+                  <div className="text-xs text-muted-foreground">{t("product.mockup.tomorrow")}</div>
                   <div className="mt-1 font-medium text-foreground">9:00 AM – 5:00 PM</div>
                   <div className="text-sm text-muted-foreground">Main Store • Floor</div>
                 </div>
                 <div className="rounded-xl border border-border bg-card p-3">
-                  <div className="text-xs text-muted-foreground">Wednesday</div>
-                  <div className="mt-1 font-medium text-foreground">Day Off</div>
+                  <div className="text-xs text-muted-foreground">{t("product.mockup.wednesday")}</div>
+                  <div className="mt-1 font-medium text-foreground">{t("product.mockup.dayOff")}</div>
                 </div>
               </div>
               <div className="mt-4 rounded-xl bg-primary/5 p-3">
                 <div className="flex items-center gap-2 text-sm">
                   <Bell className="h-4 w-4 text-primary" />
-                  <span className="text-foreground">Team meeting Thursday 9 AM</span>
+                  <span className="text-foreground">{t("product.mockup.teamMeeting")}</span>
                 </div>
               </div>
             </div>
@@ -211,8 +228,8 @@ export default function Product() {
       {/* AI Section */}
       <Section>
         <SectionHeader
-          title="AI-Assisted Scheduling"
-          subtitle="Let smart automation handle the complexity while you stay in control."
+          title={t("product.aiTitle")}
+          subtitle={t("product.aiSubtitle")}
         />
         <div className="mx-auto max-w-3xl">
           <div className="grid gap-6 md:grid-cols-2">
@@ -242,7 +259,7 @@ export default function Product() {
             className="mt-12 rounded-2xl border border-border bg-muted/30 p-6 text-center"
           >
             <p className="text-muted-foreground">
-              <strong className="text-foreground">Note:</strong> AI suggestions are always optional. You review and approve every schedule before it's published to your team.
+              <strong className="text-foreground">{language === "en" ? "Note:" : "Σημείωση:"}</strong> {t("product.aiNote")}
             </p>
           </motion.div>
         </div>
@@ -260,10 +277,10 @@ export default function Product() {
               <RefreshCw className="h-8 w-8 text-primary" />
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-              Real-Time Everything
+              {t("product.realtimeTitle")}
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              When schedules change, everyone knows immediately. No more phone trees, no more "did you see my message?" Follow-up calls become a thing of the past.
+              {t("product.realtimeSubtitle")}
             </p>
           </motion.div>
         </div>
@@ -277,21 +294,21 @@ export default function Product() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            See Omnyo in action
+            {t("product.ctaTitle")}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Get early access and discover how simple scheduling can be.
+            {t("product.ctaSubtitle")}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link to="/contact">
               <Button variant="hero" size="xl">
-                Request Early Access
+                {t("common.requestEarlyAccess")}
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
             <Link to="/pricing">
               <Button variant="hero-outline" size="xl">
-                View Pricing
+                {t("common.viewPricing")}
               </Button>
             </Link>
           </div>

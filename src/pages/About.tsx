@@ -6,31 +6,48 @@ import { Layout } from "@/components/layout/Layout";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
-
-const values = [
-  {
-    title: "Simplicity First",
-    description: "We believe great software should feel effortless. Every feature we build starts with the question: 'Is there a simpler way?'",
-  },
-  {
-    title: "Fairness Built In",
-    description: "Scheduling affects people's lives. Our tools are designed to balance business needs with employee wellbeing and preferences.",
-  },
-  {
-    title: "Mobile-Native",
-    description: "Work happens everywhere. Omnyo is built from the ground up for mobile—not adapted from desktop as an afterthought.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function About() {
+  const { t, language } = useLanguage();
+
+  const values = [
+    {
+      title: t("about.values.simplicity.title"),
+      description: t("about.values.simplicity.description"),
+    },
+    {
+      title: t("about.values.fairness.title"),
+      description: t("about.values.fairness.description"),
+    },
+    {
+      title: t("about.values.flexibility.title"),
+      description: t("about.values.flexibility.description"),
+    },
+  ];
+
+  const metaTitle = language === "en"
+    ? "About — Our Mission | Omnyo"
+    : "Σχετικά — Η Αποστολή Μας | Omnyo";
+
+  const metaDescription = language === "en"
+    ? "Learn about Omnyo's mission to modernize shift scheduling for businesses that run on shifts. Our values: simplicity, fairness, and flexibility."
+    : "Μάθετε για την αποστολή του Omnyo να εκσυγχρονίσει τον προγραμματισμό βαρδιών για επιχειρήσεις που λειτουργούν με βάρδιες. Οι αξίες μας: απλότητα, δικαιοσύνη και ευελιξία.";
+
   return (
     <Layout>
       <Helmet>
-        <title>About — Our Mission | Omnyo</title>
-        <meta
-          name="description"
-          content="Learn about Omnyo's mission to modernize shift scheduling for businesses that run on shifts. Our values: simplicity, fairness, and mobile-first design."
-        />
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteConfig.url}/about`} />
+        <meta property="og:image" content={`${siteConfig.url}/og-image.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metaTitle} />
+        <meta name="twitter:description" content={metaDescription} />
+        <meta name="twitter:image" content={`${siteConfig.url}/og-image.png`} />
       </Helmet>
 
       {/* Hero */}
@@ -41,10 +58,10 @@ export default function About() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
-            Building the future of shift work
+            {t("about.heroTitle")}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            We're on a mission to replace the spreadsheet-and-WhatsApp chaos with software that actually works for everyone.
+            {t("about.heroSubtitle")}
           </p>
         </motion.div>
       </Section>
@@ -57,25 +74,12 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-foreground md:text-3xl">Our Story</h2>
+            <h2 className="text-2xl font-bold text-foreground md:text-3xl">{t("about.ourStory")}</h2>
             <div className="mt-6 space-y-4 text-lg text-muted-foreground">
-              <p>
-                We've seen it firsthand: managers spending hours every week updating Excel spreadsheets, 
-                taking photos of paper schedules, and fielding endless phone calls about shift changes. 
-                Meanwhile, employees scroll through chaotic group chats trying to figure out when they work.
-              </p>
-              <p>
-                There had to be a better way.
-              </p>
-              <p>
-                Omnyo started with a simple idea: what if scheduling was as easy as it should be? 
-                What if managers could create schedules in minutes instead of hours? What if employees 
-                always knew exactly when and where they work, without having to ask?
-              </p>
-              <p>
-                We're building Omnyo to answer those questions. A modern, mobile-first platform that 
-                brings clarity to the chaos of shift-based work.
-              </p>
+              <p>{t("about.storyParagraphs.p1")}</p>
+              <p>{t("about.storyParagraphs.p2")}</p>
+              <p>{t("about.storyParagraphs.p3")}</p>
+              <p>{t("about.storyParagraphs.p4")}</p>
             </div>
           </motion.div>
         </div>
@@ -84,8 +88,8 @@ export default function About() {
       {/* Values */}
       <Section variant="muted">
         <SectionHeader
-          title="What we believe"
-          subtitle="The principles that guide everything we build."
+          title={t("about.whatWeBelieve")}
+          subtitle={t("about.whatWeBelieveSubtitle")}
         />
         <div className="grid gap-8 md:grid-cols-3">
           {values.map((value, i) => (
@@ -112,9 +116,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-foreground md:text-3xl">Follow our journey</h2>
+            <h2 className="text-2xl font-bold text-foreground md:text-3xl">{t("about.followJourney")}</h2>
             <p className="mt-4 text-muted-foreground">
-              Stay up to date with product updates, company news, and insights about the future of work.
+              {t("about.followJourneySubtitle")}
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <a
@@ -150,15 +154,15 @@ export default function About() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Want to be part of the journey?
+            {t("about.ctaTitle")}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            We're looking for early adopters who want to help shape the future of shift scheduling.
+            {t("about.ctaSubtitle")}
           </p>
           <div className="mt-8 flex justify-center">
             <Link to="/contact">
               <Button variant="hero" size="xl">
-                Join Early Access
+                {t("common.joinEarlyAccess")}
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>

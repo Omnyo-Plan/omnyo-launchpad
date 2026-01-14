@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface WaitlistFormProps {
   variant?: "default" | "hero";
@@ -14,12 +15,13 @@ export function WaitlistForm({ variant = "default" }: WaitlistFormProps) {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!email || !email.includes("@")) {
-      toast.error("Please enter a valid email address");
+      toast.error(t("waitlist.invalidEmail"));
       return;
     }
 
@@ -35,10 +37,10 @@ export function WaitlistForm({ variant = "default" }: WaitlistFormProps) {
 
       setIsSuccess(true);
       setEmail("");
-      toast.success("You're on the list! We'll be in touch soon.");
+      toast.success(t("waitlist.success"));
     } catch (error) {
       console.error("Error submitting waitlist:", error);
-      toast.error("Something went wrong. Please try again.");
+      toast.error(t("waitlist.error"));
     } finally {
       setIsLoading(false);
     }
@@ -54,7 +56,7 @@ export function WaitlistForm({ variant = "default" }: WaitlistFormProps) {
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
           <Check className="h-4 w-4" />
         </div>
-        <p className="font-medium text-foreground">You're on the waitlist!</p>
+        <p className="font-medium text-foreground">{t("waitlist.onWaitlist")}</p>
       </motion.div>
     );
   }
@@ -63,7 +65,7 @@ export function WaitlistForm({ variant = "default" }: WaitlistFormProps) {
     <form onSubmit={handleSubmit} className="flex w-full max-w-md gap-3">
       <Input
         type="email"
-        placeholder="Enter your work email"
+        placeholder={t("common.emailPlaceholder")}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className="h-12 flex-1 bg-background"
@@ -81,7 +83,7 @@ export function WaitlistForm({ variant = "default" }: WaitlistFormProps) {
           <Loader2 className="h-4 w-4 animate-spin" />
         ) : (
           <>
-            Join Waitlist
+            {t("common.joinWaitlist")}
             <ArrowRight className="h-4 w-4" />
           </>
         )}
