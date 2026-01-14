@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 import { Instagram, Linkedin } from "lucide-react";
 import { siteConfig } from "@/lib/config";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useThemeContext } from "@/contexts/ThemeContext";
+import logoLight from "@/assets/omnyo-logo-light.png";
+import logoDark from "@/assets/omnyo-logo-dark.png";
 
 export function Footer() {
   const { t } = useLanguage();
+  const { theme } = useThemeContext();
 
   const footerLinks = {
     product: [
@@ -25,9 +29,11 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block">
-              <span className="text-2xl font-bold tracking-tight text-foreground">
-                Omnyo
-              </span>
+              <img
+                src={theme === "dark" ? logoDark : logoLight}
+                alt="Omnyo"
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="mt-4 max-w-md text-muted-foreground">
               {t("footer.tagline")}

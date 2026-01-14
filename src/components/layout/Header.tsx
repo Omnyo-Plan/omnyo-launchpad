@@ -7,6 +7,8 @@ import { useThemeContext } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { cn } from "@/lib/utils";
+import logoLight from "@/assets/omnyo-logo-light.png";
+import logoDark from "@/assets/omnyo-logo-dark.png";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,10 +27,12 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-lg">
       <nav className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold tracking-tight text-foreground">
-            Omnyo
-          </span>
+        <Link to="/" className="flex items-center">
+          <img
+            src={theme === "dark" ? logoDark : logoLight}
+            alt="Omnyo"
+            className="h-8 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}
