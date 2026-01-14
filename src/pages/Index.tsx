@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Users, Bell, Sparkles, Clock, Shield } from "lucide-react";
+import { ArrowRight, Calendar, Users, Bell, Clock, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { FeatureCard, StepCard } from "@/components/ui/feature-card";
@@ -8,6 +8,7 @@ import { WaitlistForm } from "@/components/forms/WaitlistForm";
 import { Layout } from "@/components/layout/Layout";
 import { Helmet } from "react-helmet-async";
 import { siteConfig } from "@/lib/config";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Accordion,
   AccordionContent,
@@ -15,108 +16,117 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const features = [
-  {
-    icon: Calendar,
-    title: "Visual Schedule Builder",
-    description: "Create weekly or monthly schedules per location and role in minutes. Drag, drop, and done.",
-  },
-  {
-    icon: Bell,
-    title: "Instant Notifications",
-    description: "Sick leave, time off, shift swaps—employees are notified immediately. No more phone calls.",
-  },
-  {
-    icon: Sparkles,
-    title: "AI-Assisted Scheduling",
-    description: "Smart suggestions based on business needs, employee preferences, and availability.",
-  },
-  {
-    icon: Users,
-    title: "Employee Hub",
-    description: "One place for schedules, updates, and announcements. Always accessible on mobile.",
-  },
-  {
-    icon: Clock,
-    title: "Real-Time Updates",
-    description: "Last-minute changes? The system regenerates optimized schedules automatically.",
-  },
-  {
-    icon: Shield,
-    title: "Fair & Transparent",
-    description: "Balance workloads fairly. Employees submit preferences, managers stay in control.",
-  },
-];
-
-const steps = [
-  {
-    title: "Set up your locations and roles",
-    description: "Add your business locations, define roles, and invite your team. Takes about 5 minutes.",
-  },
-  {
-    title: "Create your first schedule",
-    description: "Use our visual builder or let AI generate a schedule based on your requirements.",
-  },
-  {
-    title: "Your team stays in sync",
-    description: "Everyone sees the latest schedule on their phone. Changes push instantly.",
-  },
-];
-
-const industries = [
-  {
-    name: "Hospitality",
-    description: "Cafés, restaurants, hotels, and bars",
-    icon: "☕",
-  },
-  {
-    name: "Retail",
-    description: "Shops, boutiques, and chain stores",
-    icon: "🛍️",
-  },
-  {
-    name: "Logistics",
-    description: "Warehouses, delivery, and distribution",
-    icon: "📦",
-  },
-];
-
-const faqs = [
-  {
-    question: "How is Omnyo different from a spreadsheet?",
-    answer: "Spreadsheets require manual updates, endless back-and-forth messages, and don't notify anyone when things change. Omnyo automates notifications, suggests optimal schedules, and gives everyone a single source of truth on their phone.",
-  },
-  {
-    question: "Do employees need to download an app?",
-    answer: "Omnyo works as a mobile web app, so employees can access it from any smartphone browser. We also offer native apps for the best experience.",
-  },
-  {
-    question: "How does AI-assisted scheduling work?",
-    answer: "Our AI considers your business needs (opening hours, expected traffic, required roles) and employee preferences (availability, max hours) to suggest balanced, efficient schedules. You always have final approval.",
-  },
-  {
-    question: "Is my data secure?",
-    answer: "Absolutely. We use enterprise-grade encryption and follow best practices for data protection. Your schedule and employee data is never shared or sold.",
-  },
-  {
-    question: "What's included in the pilot program?",
-    answer: "Early access includes all core features: schedule builder, notifications, employee app, and AI suggestions. We'll also provide dedicated onboarding support.",
-  },
-];
-
 export default function Index() {
+  const { t, language } = useLanguage();
+
+  const features = [
+    {
+      icon: Calendar,
+      title: t("home.features.visualBuilder.title"),
+      description: t("home.features.visualBuilder.description"),
+    },
+    {
+      icon: Bell,
+      title: t("home.features.notifications.title"),
+      description: t("home.features.notifications.description"),
+    },
+    {
+      icon: Users,
+      title: t("home.features.employeeHub.title"),
+      description: t("home.features.employeeHub.description"),
+    },
+    {
+      icon: Clock,
+      title: t("home.features.realtime.title"),
+      description: t("home.features.realtime.description"),
+    },
+    {
+      icon: Shield,
+      title: t("home.features.fair.title"),
+      description: t("home.features.fair.description"),
+    },
+  ];
+
+  const steps = [
+    {
+      title: t("home.steps.step1.title"),
+      description: t("home.steps.step1.description"),
+    },
+    {
+      title: t("home.steps.step2.title"),
+      description: t("home.steps.step2.description"),
+    },
+    {
+      title: t("home.steps.step3.title"),
+      description: t("home.steps.step3.description"),
+    },
+  ];
+
+  const industries = [
+    {
+      name: t("home.industries.hospitality.name"),
+      description: t("home.industries.hospitality.description"),
+      icon: "☕",
+    },
+    {
+      name: t("home.industries.retail.name"),
+      description: t("home.industries.retail.description"),
+      icon: "🛍️",
+    },
+    {
+      name: t("home.industries.logistics.name"),
+      description: t("home.industries.logistics.description"),
+      icon: "📦",
+    },
+  ];
+
+  const faqs = [
+    {
+      question: t("home.faqs.spreadsheet.question"),
+      answer: t("home.faqs.spreadsheet.answer"),
+    },
+    {
+      question: t("home.faqs.aiScheduling.question"),
+      answer: t("home.faqs.aiScheduling.answer"),
+    },
+    {
+      question: t("home.faqs.security.question"),
+      answer: t("home.faqs.security.answer"),
+    },
+    {
+      question: t("home.faqs.pilot.question"),
+      answer: t("home.faqs.pilot.answer"),
+    },
+  ];
+
+  const painPoints = [
+    { emoji: "📊", text: t("home.painPoints.spreadsheets") },
+    { emoji: "📱", text: t("home.painPoints.whatsapp") },
+    { emoji: "📞", text: t("home.painPoints.phoneCalls") },
+  ];
+
+  const metaTitle = language === "en" 
+    ? "Omnyo — Modern Shift Management for Growing Teams"
+    : "Omnyo — Σύγχρονη Διαχείριση Βαρδιών για Αναπτυσσόμενες Ομάδες";
+  
+  const metaDescription = language === "en"
+    ? "Replace spreadsheets, paper schedules, and WhatsApp chaos with Omnyo. A smart, mobile-first shift management system for hospitality, retail, and logistics."
+    : "Αντικαταστήστε υπολογιστικά φύλλα, χάρτινα προγράμματα και χάος WhatsApp με το Omnyo. Ένα έξυπνο σύστημα διαχείρισης βαρδιών για φιλοξενία, λιανική και logistics.";
+
   return (
     <Layout>
       <Helmet>
-        <title>Omnyo — Modern Shift Management for Growing Teams</title>
-        <meta
-          name="description"
-          content="Replace spreadsheets, paper schedules, and WhatsApp chaos with Omnyo. A smart, mobile-first shift management system for hospitality, retail, and logistics."
-        />
-        <meta property="og:title" content="Omnyo — Modern Shift Management" />
-        <meta property="og:description" content={siteConfig.tagline} />
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDescription} />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content={siteConfig.url} />
+        <meta property="og:image" content={`${siteConfig.url}/og-image.png`} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metaTitle} />
+        <meta name="twitter:description" content={metaDescription} />
+        <meta name="twitter:image" content={`${siteConfig.url}/og-image.png`} />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -140,7 +150,7 @@ export default function Index() {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm text-muted-foreground backdrop-blur-sm"
           >
             <span className="inline-block h-2 w-2 rounded-full bg-primary animate-pulse" />
-            Now accepting early access applications
+            {t("home.heroTag")}
           </motion.div>
 
           <motion.h1
@@ -149,8 +159,8 @@ export default function Index() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="max-w-4xl text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl"
           >
-            Stop scheduling chaos.{" "}
-            <span className="text-primary">Start running shifts.</span>
+            {t("home.heroTitle")}{" "}
+            <span className="text-primary">{t("home.heroTitleHighlight")}</span>
           </motion.h1>
 
           <motion.p
@@ -159,7 +169,7 @@ export default function Index() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl"
           >
-            {siteConfig.tagline}. Replace spreadsheets, paper schedules, and WhatsApp groups with one smart system.
+            {t("home.heroSubtitle")}
           </motion.p>
 
           <motion.div
@@ -170,13 +180,13 @@ export default function Index() {
           >
             <Link to="/contact">
               <Button variant="hero" size="xl">
-                Get Early Access
+                {t("nav.getEarlyAccess")}
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
             <Link to="/product">
               <Button variant="hero-outline" size="xl">
-                See How It Works
+                {t("common.seeHowItWorks")}
               </Button>
             </Link>
           </motion.div>
@@ -194,7 +204,7 @@ export default function Index() {
                 className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 backdrop-blur-sm"
               >
                 <span className="text-lg">{industry.icon}</span>
-                <span>Built for {industry.name}</span>
+                <span>{t("home.builtFor")} {industry.name}</span>
               </div>
             ))}
           </motion.div>
@@ -209,15 +219,11 @@ export default function Index() {
       {/* Problem Section */}
       <Section variant="muted">
         <SectionHeader
-          title="Sound familiar?"
-          subtitle="If you're still using Excel, paper schedules, or group chats to manage shifts, you know the pain."
+          title={t("home.soundFamiliar")}
+          subtitle={t("home.soundFamiliarSubtitle")}
         />
         <div className="grid gap-6 md:grid-cols-3">
-          {[
-            { emoji: "📊", text: "Hours spent updating spreadsheets every week" },
-            { emoji: "📱", text: "Endless WhatsApp messages about schedule changes" },
-            { emoji: "📞", text: "Phone calls for every sick day and swap request" },
-          ].map((item, i) => (
+          {painPoints.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -236,8 +242,8 @@ export default function Index() {
       {/* Features Section */}
       <Section>
         <SectionHeader
-          title="Everything you need to run shifts smoothly"
-          subtitle="One platform for scheduling, communication, and team coordination."
+          title={t("home.featuresTitle")}
+          subtitle={t("home.featuresSubtitle")}
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, i) => (
@@ -248,7 +254,7 @@ export default function Index() {
 
       {/* How it Works Section */}
       <Section variant="muted">
-        <SectionHeader title="Up and running in 3 steps" />
+        <SectionHeader title={t("home.stepsTitle")} />
         <div className="mx-auto max-w-xl">
           {steps.map((step, i) => (
             <StepCard key={step.title} number={i + 1} {...step} delay={i * 0.15} />
@@ -259,8 +265,8 @@ export default function Index() {
       {/* Industries Section */}
       <Section>
         <SectionHeader
-          title="Built for teams that work in shifts"
-          subtitle="From a single café to a multi-location retail chain."
+          title={t("home.industriesTitle")}
+          subtitle={t("home.industriesSubtitle")}
         />
         <div className="grid gap-6 md:grid-cols-3">
           {industries.map((industry, i) => (
@@ -283,7 +289,7 @@ export default function Index() {
 
       {/* FAQ Section */}
       <Section variant="muted">
-        <SectionHeader title="Frequently asked questions" />
+        <SectionHeader title={t("home.faqTitle")} />
         <div className="mx-auto max-w-2xl">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
@@ -309,10 +315,10 @@ export default function Index() {
           className="mx-auto max-w-2xl"
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
-            Ready to simplify your scheduling?
+            {t("home.ctaTitle")}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Join our early access program and be among the first to experience stress-free shift management.
+            {t("home.ctaSubtitle")}
           </p>
           <div className="mt-10 flex justify-center">
             <WaitlistForm variant="hero" />
