@@ -1,5 +1,13 @@
 import { motion } from "framer-motion";
-import { Calendar, Users, Bell, Sparkles, ArrowRight, Smartphone, RefreshCw } from "lucide-react";
+import {
+  Calendar,
+  Users,
+  Bell,
+  Sparkles,
+  ArrowRight,
+  Smartphone,
+  RefreshCw,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
@@ -26,7 +34,9 @@ export default function Product() {
     {
       icon: Bell,
       title: t("product.managerFeatures.automatedNotifications.title"),
-      description: t("product.managerFeatures.automatedNotifications.description"),
+      description: t(
+        "product.managerFeatures.automatedNotifications.description"
+      ),
     },
   ];
 
@@ -72,17 +82,20 @@ export default function Product() {
     },
   ];
 
-  const metaTitle = language === "en"
-    ? "Product — How Omnyo Works | Shift Management Features"
-    : "Προϊόν — Πώς Λειτουργεί το Omnyo | Χαρακτηριστικά Διαχείρισης Βαρδιών";
+  const metaTitle =
+    language === "en"
+      ? "Product — How Omnyo Works | Shift Management Features"
+      : "Προϊόν — Πώς Λειτουργεί το Omnyo | Χαρακτηριστικά Διαχείρισης Βαρδιών";
 
-  const metaDescription = language === "en"
-    ? "Discover how Omnyo simplifies shift scheduling for managers and employees. Visual builder, real-time notifications, and mobile access."
-    : "Ανακαλύψτε πώς το Omnyo απλοποιεί τον προγραμματισμό βαρδιών για διευθυντές και εργαζόμενους. Οπτικός δημιουργός, ειδοποιήσεις σε πραγματικό χρόνο και πρόσβαση από κινητό.";
+  const metaDescription =
+    language === "en"
+      ? "Discover how Omnyo simplifies shift scheduling for managers and employees. Visual builder, real-time notifications, and mobile access."
+      : "Ανακαλύψτε πώς το Omnyo απλοποιεί τον προγραμματισμό βαρδιών για μάνατζερ και εργαζόμενους. Οπτικός δημιουργός, ειδοποιήσεις σε πραγματικό χρόνο και πρόσβαση από κινητό.";
 
-  const days = language === "en" 
-    ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    : ["Δευ", "Τρι", "Τετ", "Πεμ", "Παρ", "Σαβ", "Κυρ"];
+  const days =
+    language === "en"
+      ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+      : ["Δευ", "Τρι", "Τετ", "Πεμ", "Παρ", "Σαβ", "Κυρ"];
 
   return (
     <Layout>
@@ -140,16 +153,28 @@ export default function Product() {
               <div className="h-3 w-3 rounded-full bg-red-400" />
               <div className="h-3 w-3 rounded-full bg-yellow-400" />
               <div className="h-3 w-3 rounded-full bg-green-400" />
-              <span className="ml-4 text-sm text-muted-foreground">{t("product.mockup.scheduleBuilder")}</span>
+              <span className="ml-4 text-sm text-muted-foreground">
+                {t("product.mockup.scheduleBuilder")}
+              </span>
             </div>
             <div className="p-6">
               <div className="grid grid-cols-7 gap-2 text-center text-sm">
                 {days.map((day) => (
-                  <div key={day} className="py-2 font-medium text-muted-foreground">{day}</div>
+                  <div
+                    key={day}
+                    className="py-2 font-medium text-muted-foreground"
+                  >
+                    {day}
+                  </div>
                 ))}
                 {Array.from({ length: 7 }).map((_, i) => (
-                  <div key={i} className="min-h-[120px] rounded-lg border border-border bg-background p-2">
-                    <div className="mb-2 text-xs text-muted-foreground">{20 + i}</div>
+                  <div
+                    key={i}
+                    className="min-h-[120px] rounded-lg border border-border bg-background p-2"
+                  >
+                    <div className="mb-2 text-xs text-muted-foreground">
+                      {20 + i}
+                    </div>
                     {i < 5 && (
                       <>
                         <div className="mb-1 rounded bg-primary/10 px-2 py-1 text-xs text-primary">
@@ -195,29 +220,49 @@ export default function Product() {
           <div className="w-[280px] rounded-[40px] border-8 border-foreground/10 bg-card p-2 shadow-xl">
             <div className="rounded-[32px] bg-background p-4">
               <div className="mb-4 flex items-center justify-between">
-                <span className="font-semibold text-foreground">{t("product.mockup.mySchedule")}</span>
+                <span className="font-semibold text-foreground">
+                  {t("product.mockup.mySchedule")}
+                </span>
                 <Bell className="h-5 w-5 text-muted-foreground" />
               </div>
               <div className="space-y-3">
                 <div className="rounded-xl bg-primary/10 p-3">
-                  <div className="text-xs text-muted-foreground">{t("product.mockup.today")}</div>
-                  <div className="mt-1 font-medium text-foreground">2:00 PM – 10:00 PM</div>
-                  <div className="text-sm text-muted-foreground">Main Store • Cashier</div>
+                  <div className="text-xs text-muted-foreground">
+                    {t("product.mockup.today")}
+                  </div>
+                  <div className="mt-1 font-medium text-foreground">
+                    2:00 PM – 10:00 PM
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Main Store • Cashier
+                  </div>
                 </div>
                 <div className="rounded-xl border border-border bg-card p-3">
-                  <div className="text-xs text-muted-foreground">{t("product.mockup.tomorrow")}</div>
-                  <div className="mt-1 font-medium text-foreground">9:00 AM – 5:00 PM</div>
-                  <div className="text-sm text-muted-foreground">Main Store • Floor</div>
+                  <div className="text-xs text-muted-foreground">
+                    {t("product.mockup.tomorrow")}
+                  </div>
+                  <div className="mt-1 font-medium text-foreground">
+                    9:00 AM – 5:00 PM
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Main Store • Floor
+                  </div>
                 </div>
                 <div className="rounded-xl border border-border bg-card p-3">
-                  <div className="text-xs text-muted-foreground">{t("product.mockup.wednesday")}</div>
-                  <div className="mt-1 font-medium text-foreground">{t("product.mockup.dayOff")}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {t("product.mockup.wednesday")}
+                  </div>
+                  <div className="mt-1 font-medium text-foreground">
+                    {t("product.mockup.dayOff")}
+                  </div>
                 </div>
               </div>
               <div className="mt-4 rounded-xl bg-primary/5 p-3">
                 <div className="flex items-center gap-2 text-sm">
                   <Bell className="h-4 w-4 text-primary" />
-                  <span className="text-foreground">{t("product.mockup.teamMeeting")}</span>
+                  <span className="text-foreground">
+                    {t("product.mockup.teamMeeting")}
+                  </span>
                 </div>
               </div>
             </div>
@@ -246,8 +291,12 @@ export default function Product() {
                   <Sparkles className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">{feature.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{feature.description}</p>
+                  <h3 className="font-semibold text-foreground">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {feature.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -259,7 +308,10 @@ export default function Product() {
             className="mt-12 rounded-2xl border border-border bg-muted/30 p-6 text-center"
           >
             <p className="text-muted-foreground">
-              <strong className="text-foreground">{language === "en" ? "Note:" : "Σημείωση:"}</strong> {t("product.aiNote")}
+              <strong className="text-foreground">
+                {language === "en" ? "Note:" : "Σημείωση:"}
+              </strong>{" "}
+              {t("product.aiNote")}
             </p>
           </motion.div>
         </div>

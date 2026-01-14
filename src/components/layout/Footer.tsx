@@ -32,7 +32,7 @@ export function Footer() {
               <img
                 src={theme === "dark" ? logoDark : logoLight}
                 alt="Omnyo"
-                className="h-8 w-auto"
+                className="brand-logo shrink-0"
               />
             </Link>
             <p className="mt-4 max-w-md text-muted-foreground">

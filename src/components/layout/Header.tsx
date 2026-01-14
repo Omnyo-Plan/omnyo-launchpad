@@ -25,13 +25,13 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-lg">
-      <nav className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
+      <nav className="container mx-auto flex items-center justify-between px-4 py-4 lg:px-8 lg:py-6">
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
             src={theme === "dark" ? logoDark : logoLight}
             alt="Omnyo"
-            className="h-8 w-auto"
+            className="brand-logo shrink-0"
           />
         </Link>
 
