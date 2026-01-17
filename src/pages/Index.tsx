@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Users, Bell, Clock, Shield } from "lucide-react";
+import { ArrowRight, Calendar, Users, Bell, Clock, Shield, Table2, MessageSquare, Phone, Coffee, ShoppingBag, Package, LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { FeatureCard, StepCard } from "@/components/ui/feature-card";
@@ -62,21 +62,21 @@ export default function Index() {
     },
   ];
 
-  const industries = [
+  const industries: { name: string; description: string; icon: LucideIcon }[] = [
     {
       name: t("home.industries.hospitality.name"),
       description: t("home.industries.hospitality.description"),
-      icon: "☕",
+      icon: Coffee,
     },
     {
       name: t("home.industries.retail.name"),
       description: t("home.industries.retail.description"),
-      icon: "🛍️",
+      icon: ShoppingBag,
     },
     {
       name: t("home.industries.logistics.name"),
       description: t("home.industries.logistics.description"),
-      icon: "📦",
+      icon: Package,
     },
   ];
 
@@ -99,15 +99,15 @@ export default function Index() {
     },
   ];
 
-  const painPoints = [
-    { emoji: "📊", text: t("home.painPoints.spreadsheets") },
-    { emoji: "📱", text: t("home.painPoints.whatsapp") },
-    { emoji: "📞", text: t("home.painPoints.phoneCalls") },
+  const painPoints: { icon: LucideIcon; text: string }[] = [
+    { icon: Table2, text: t("home.painPoints.spreadsheets") },
+    { icon: MessageSquare, text: t("home.painPoints.whatsapp") },
+    { icon: Phone, text: t("home.painPoints.phoneCalls") },
   ];
 
   const metaTitle = language === "en" 
-    ? "Omnyo — Modern Shift Management for Growing Teams"
-    : "Omnyo — Σύγχρονη Διαχείριση Βαρδιών για Αναπτυσσόμενες Ομάδες";
+    ? "Omnyo - Modern Shift Management for Growing Teams"
+    : "Omnyo - Σύγχρονη Διαχείριση Βαρδιών για Αναπτυσσόμενες Ομάδες";
   
   const metaDescription = language === "en"
     ? "Replace spreadsheets, paper schedules, and WhatsApp chaos with Omnyo. A smart, mobile-first shift management system for hospitality, retail, and logistics."
@@ -203,7 +203,7 @@ export default function Index() {
                 key={industry.name}
                 className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 backdrop-blur-sm"
               >
-                <span className="text-lg">{industry.icon}</span>
+                <industry.icon className="h-5 w-5 text-primary" />
                 <span>{t("home.builtFor")} {industry.name}</span>
               </div>
             ))}
@@ -232,7 +232,7 @@ export default function Index() {
               transition={{ delay: i * 0.1 }}
               className="flex items-start gap-4 rounded-xl border border-border bg-card p-6"
             >
-              <span className="text-3xl">{item.emoji}</span>
+              <item.icon className="h-8 w-8 text-primary flex-shrink-0" />
               <p className="text-lg text-foreground">{item.text}</p>
             </motion.div>
           ))}
@@ -279,7 +279,7 @@ export default function Index() {
               whileHover={{ y: -4 }}
               className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 text-center shadow-card transition-shadow hover:shadow-card-hover"
             >
-              <span className="mb-4 block text-5xl">{industry.icon}</span>
+              <industry.icon className="mb-4 mx-auto h-12 w-12 text-primary" />
               <h3 className="mb-2 text-xl font-semibold text-foreground">{industry.name}</h3>
               <p className="text-muted-foreground">{industry.description}</p>
             </motion.div>

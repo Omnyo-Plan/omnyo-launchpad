@@ -14,8 +14,8 @@ export default function Contact() {
   const { t, language } = useLanguage();
 
   const metaTitle = language === "en"
-    ? "Contact — Get in Touch | Omnyo"
-    : "Επικοινωνία — Επικοινωνήστε Μαζί Μας | Omnyo";
+    ? "Contact - Get in Touch | Omnyo"
+    : "Επικοινωνία - Επικοινωνήστε Μαζί Μας | Omnyo";
 
   const metaDescription = language === "en"
     ? "Contact Omnyo to learn more about our shift management platform or join our early access waitlist."

@@ -27,8 +27,8 @@ export default function About() {
   ];
 
   const metaTitle = language === "en"
-    ? "About — Our Mission | Omnyo"
-    : "Σχετικά — Η Αποστολή Μας | Omnyo";
+    ? "About - Our Mission | Omnyo"
+    : "Σχετικά - Η Αποστολή Μας | Omnyo";
 
   const metaDescription = language === "en"
     ? "Learn about Omnyo's mission to modernize shift scheduling for businesses that run on shifts. Our values: simplicity, fairness, and flexibility."

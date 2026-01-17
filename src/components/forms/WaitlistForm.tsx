@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { WEB3FORMS_ACCESS_KEY } from "@/lib/web3forms";
 
 interface WaitlistFormProps {
   variant?: "default" | "hero";
@@ -28,12 +28,19 @@ export function WaitlistForm({ variant = "default" }: WaitlistFormProps) {
     setIsLoading(true);
 
     try {
-      const { error } = await supabase.from("leads").insert({
-        email: email.trim(),
-        source: "waitlist",
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          email: email.trim(),
+          subject: "Νέο Waitlist Signup",
+          message: `Νέο email για waitlist: ${email.trim()}`,
+        }),
       });
 
-      if (error) throw error;
+      const data = await response.json();
+      if (!data.success) throw new Error(data.message);
 
       setIsSuccess(true);
       setEmail("");

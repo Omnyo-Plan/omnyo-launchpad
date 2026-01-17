@@ -97,7 +97,7 @@ const translations = {
       seeHowItWorks: "See How It Works",
       applyForEarlyAccess: "Apply for Early Access",
       joinEarlyAccess: "Join Early Access",
-      emailPlaceholder: "Enter your work email",
+      emailPlaceholder: "Work email",
       copyrightNotice: "© 2026 Omnyo. All rights reserved",
     },
     // Home page
@@ -128,7 +128,7 @@ const translations = {
         notifications: {
           title: "Instant Notifications",
           description:
-            "Sick leave, time off, shift swaps—employees are notified immediately. No more phone calls.",
+            "Sick leave, time off, shift swaps - employees are notified immediately. No more phone calls.",
         },
         employeeHub: {
           title: "Employee Hub",
@@ -215,7 +215,7 @@ const translations = {
         "Omnyo combines intuitive scheduling tools with smart automation. Managers save time, employees stay informed, and everyone stays in sync.",
       forManagers: "For Managers",
       forManagersSubtitle:
-        "Create, adjust, and communicate schedules in minutes—not hours.",
+        "Create, adjust, and communicate schedules in minutes - not hours.",
       managerFeatures: {
         visualBuilder: {
           title: "Visual Schedule Builder",
@@ -255,7 +255,7 @@ const translations = {
         teamAnnouncements: {
           title: "Team Announcements",
           description:
-            "Important updates, meetings, and company news—all in one place. No more scattered group chats.",
+            "Important updates, meetings, and company news - all in one place. No more scattered group chats.",
         },
       },
       aiTitle: "AI-Assisted Scheduling",
@@ -292,7 +292,7 @@ const translations = {
       ctaSubtitle:
         "Get early access and discover how simple scheduling can be.",
       mockup: {
-        scheduleBuilder: "Schedule Builder — Week of Jan 20",
+        scheduleBuilder: "Schedule Builder - Week of Jan 20",
         today: "Today",
         tomorrow: "Tomorrow",
         wednesday: "Wednesday",
@@ -346,7 +346,7 @@ const translations = {
       otherWays: "Other ways to reach us",
       responseTime: "Response time",
       responseTimeText:
-        "We typically respond within 24 hours on business days.",
+        "We typically respond within 24 hours.",
       form: {
         name: "Name",
         namePlaceholder: "Your name",
@@ -401,7 +401,7 @@ const translations = {
         flexibility: {
           title: "Flexibility Drives Performance",
           description:
-            "When employees can work at times that suit them—within business constraints—they're happier and more productive. Satisfied teams perform better.",
+            "When employees can work at times that suit them, within business constraints, they're happier and more productive. Satisfied teams perform better.",
         },
       },
       followJourney: "Follow our journey",
@@ -449,7 +449,7 @@ const translations = {
       seeHowItWorks: "Δείτε Πώς Λειτουργεί",
       applyForEarlyAccess: "Αίτηση Πρόωρης Πρόσβασης",
       joinEarlyAccess: "Εγγραφή Πρόωρης Πρόσβασης",
-      emailPlaceholder: "Εισάγετε το email εργασίας σας",
+      emailPlaceholder: "Email εργασίας",
       copyrightNotice: "© 2026 Omnyo. All rights reserved",
     },
     // Home page
@@ -481,7 +481,7 @@ const translations = {
         notifications: {
           title: "Άμεσες Ειδοποιήσεις",
           description:
-            "Άδεια ασθενείας, ρεπό, αλλαγές βάρδιας—οι εργαζόμενοι ενημερώνονται άμεσα. Τέλος στα τηλεφωνήματα.",
+            "Άδεια ασθενείας, ρεπό, αλλαγές βάρδιας - οι εργαζόμενοι ενημερώνονται άμεσα. Τέλος στα τηλεφωνήματα.",
         },
         employeeHub: {
           title: "Κέντρο Εργαζομένων",
@@ -567,7 +567,7 @@ const translations = {
         "Το Omnyo συνδυάζει διαισθητικά εργαλεία προγραμματισμού με έξυπνη αυτοματοποίηση. Οι μάνατζερ εξοικονομούν χρόνο, οι εργαζόμενοι μένουν ενημερωμένοι και όλοι είναι συγχρονισμένοι.",
       forManagers: "Για Μάνατζερ",
       forManagersSubtitle:
-        "Δημιουργήστε, προσαρμόστε και επικοινωνήστε προγράμματα σε λεπτά—όχι σε ώρες.",
+        "Δημιουργήστε, προσαρμόστε και επικοινωνήστε προγράμματα σε λεπτά - όχι σε ώρες.",
       managerFeatures: {
         visualBuilder: {
           title: "Οπτικός Δημιουργός Προγράμματος",
@@ -607,7 +607,7 @@ const translations = {
         teamAnnouncements: {
           title: "Ανακοινώσεις Ομάδας",
           description:
-            "Σημαντικές ενημερώσεις, συναντήσεις και εταιρικά νέα—όλα σε ένα μέρος. Τέλος στις διάσπαρτες ομαδικές συνομιλίες.",
+            "Σημαντικές ενημερώσεις, συναντήσεις και εταιρικά νέα - όλα σε ένα μέρος. Τέλος στις διάσπαρτες ομαδικές συνομιλίες.",
         },
       },
       aiTitle: "Προγραμματισμός με Υποστήριξη AI",
@@ -644,7 +644,7 @@ const translations = {
       ctaSubtitle:
         "Αποκτήστε πρόωρη πρόσβαση και ανακαλύψτε πόσο απλός μπορεί να είναι ο προγραμματισμός.",
       mockup: {
-        scheduleBuilder: "Δημιουργός Προγράμματος — Εβδομάδα 20 Ιαν",
+        scheduleBuilder: "Δημιουργός Προγράμματος - Εβδομάδα 20 Ιαν",
         today: "Σήμερα",
         tomorrow: "Αύριο",
         wednesday: "Τετάρτη",
@@ -698,7 +698,7 @@ const translations = {
         "Εγγραφείτε στη λίστα αναμονής για πρόωρη πρόσβαση και ενημερώσεις προϊόντος.",
       otherWays: "Άλλοι τρόποι επικοινωνίας",
       responseTime: "Χρόνος απόκρισης",
-      responseTimeText: "Συνήθως απαντάμε εντός 24 ωρών τις εργάσιμες ημέρες.",
+      responseTimeText: "Συνήθως απαντάμε εντός 24 ωρών.",
       form: {
         name: "Όνομα",
         namePlaceholder: "Το όνομά σας",
@@ -754,7 +754,7 @@ const translations = {
         flexibility: {
           title: "Η Ευελιξία Οδηγεί την Απόδοση",
           description:
-            "Όταν οι εργαζόμενοι μπορούν να εργάζονται σε ώρες που τους βολεύουν—εντός των επιχειρησιακών περιορισμών—είναι πιο χαρούμενοι και πιο παραγωγικοί. Οι ικανοποιημένες ομάδες αποδίδουν καλύτερα.",
+            "Όταν οι εργαζόμενοι μπορούν να εργάζονται σε ώρες που τους βολεύουν, εντός των επιχειρησιακών περιορισμών, είναι πιο χαρούμενοι και πιο παραγωγικοί. Οι ικανοποιημένες ομάδες αποδίδουν καλύτερα.",
         },
       },
       followJourney: "Ακολουθήστε την πορεία μας",

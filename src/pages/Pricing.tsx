@@ -29,8 +29,8 @@ export default function Pricing() {
   ];
 
   const metaTitle = language === "en"
-    ? "Pricing — Early Access Program | Omnyo"
-    : "Τιμολόγηση — Πρόγραμμα Πρόωρης Πρόσβασης | Omnyo";
+    ? "Pricing - Early Access Program | Omnyo"
+    : "Τιμολόγηση - Πρόγραμμα Πρόωρης Πρόσβασης | Omnyo";
 
   const metaDescription = language === "en"
     ? "Join Omnyo's early access pilot program. Full features, dedicated support for early adopters."

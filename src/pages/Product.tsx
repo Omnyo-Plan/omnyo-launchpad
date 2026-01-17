@@ -84,8 +84,8 @@ export default function Product() {
 
   const metaTitle =
     language === "en"
-      ? "Product — How Omnyo Works | Shift Management Features"
-      : "Προϊόν — Πώς Λειτουργεί το Omnyo | Χαρακτηριστικά Διαχείρισης Βαρδιών";
+      ? "Product - How Omnyo Works | Shift Management Features"
+      : "Προϊόν - Πώς Λειτουργεί το Omnyo | Χαρακτηριστικά Διαχείρισης Βαρδιών";
 
   const metaDescription =
     language === "en"
@@ -157,41 +157,46 @@ export default function Product() {
                 {t("product.mockup.scheduleBuilder")}
               </span>
             </div>
-            <div className="p-6">
-              <div className="grid grid-cols-7 gap-2 text-center text-sm">
-                {days.map((day) => (
-                  <div
-                    key={day}
-                    className="py-2 font-medium text-muted-foreground"
-                  >
-                    {day}
-                  </div>
-                ))}
-                {Array.from({ length: 7 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="min-h-[120px] rounded-lg border border-border bg-background p-2"
-                  >
-                    <div className="mb-2 text-xs text-muted-foreground">
-                      {20 + i}
-                    </div>
-                    {i < 5 && (
-                      <>
-                        <div className="mb-1 rounded bg-primary/10 px-2 py-1 text-xs text-primary">
-                          {i % 2 === 0 ? "Sarah 9-5" : "Mike 9-5"}
-                        </div>
-                        <div className="rounded bg-secondary/50 px-2 py-1 text-xs text-secondary-foreground">
-                          {i % 2 === 0 ? "Tom 2-10" : "Ana 2-10"}
-                        </div>
-                      </>
-                    )}
-                    {i >= 5 && (
-                      <div className="rounded bg-primary/10 px-2 py-1 text-xs text-primary">
-                        {i === 5 ? "Team A" : "Team B"}
+            <div className="p-4 md:p-6">
+              {/* Mobile view: scrollable horizontal */}
+              <div className="overflow-x-auto">
+                <div className="min-w-[600px] md:min-w-0">
+                  <div className="grid grid-cols-7 gap-1 md:gap-2 text-center text-xs md:text-sm">
+                    {days.map((day) => (
+                      <div
+                        key={day}
+                        className="py-1 md:py-2 font-medium text-muted-foreground"
+                      >
+                        {day}
                       </div>
-                    )}
+                    ))}
+                    {Array.from({ length: 7 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className="min-h-[80px] md:min-h-[120px] rounded-lg border border-border bg-background p-1 md:p-2"
+                      >
+                        <div className="mb-1 md:mb-2 text-xs text-muted-foreground">
+                          {20 + i}
+                        </div>
+                        {i < 5 && (
+                          <>
+                            <div className="mb-1 rounded bg-primary/10 px-1 md:px-2 py-0.5 md:py-1 text-[10px] md:text-xs text-primary truncate">
+                              {i % 2 === 0 ? "Sarah 9-5" : "Mike 9-5"}
+                            </div>
+                            <div className="rounded bg-secondary/50 px-1 md:px-2 py-0.5 md:py-1 text-[10px] md:text-xs text-secondary-foreground truncate">
+                              {i % 2 === 0 ? "Tom 2-10" : "Ana 2-10"}
+                            </div>
+                          </>
+                        )}
+                        {i >= 5 && (
+                          <div className="rounded bg-primary/10 px-1 md:px-2 py-0.5 md:py-1 text-[10px] md:text-xs text-primary truncate">
+                            {i === 5 ? "Team A" : "Team B"}
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
