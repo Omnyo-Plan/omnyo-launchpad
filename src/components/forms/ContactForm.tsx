@@ -53,7 +53,7 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.email || !formData.name) {
+    if (!formData.email || !formData.name || !formData.message.trim()) {
       toast.error(t("contact.form.error"));
       return;
     }
@@ -78,7 +78,7 @@ export function ContactForm() {
           company: formData.company || "Not provided",
           role: formData.role || "Not provided",
           team_size: formData.teamSize || "Not provided",
-          message: formData.message || "No message",
+          message: formData.message,
           subject: `Νέα επικοινωνία από ${formData.name}`,
         }),
       });
@@ -199,7 +199,9 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="message">{t("contact.form.message")}</Label>
+        <Label htmlFor="message">
+          {t("contact.form.message")} <span className="text-primary">*</span>
+        </Label>
         <Textarea
           id="message"
           placeholder={t("contact.form.messagePlaceholder")}
@@ -207,6 +209,8 @@ export function ContactForm() {
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           className="resize-none"
+          required
+          aria-required="true"
         />
       </div>
 
