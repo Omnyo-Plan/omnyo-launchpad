@@ -1,26 +1,46 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <script>
-      // Single Page App GitHub Pages redirect
-      // This script takes the current URL and converts the path and query
-      // string into just a query string, and then redirects the browser
-      // to the new URL with only a query string and hash fragment.
-      var pathSegmentsToKeep = 0;
-
-      var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
-      );
-    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Page Not Found | Omnyo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Manrope", system-ui, sans-serif;
+        background: #f7f7f6;
+        color: #14212e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .card {
+        text-align: center;
+        padding: 40px;
+        max-width: 520px;
+      }
+      h1 {
+        font-size: 48px;
+        margin-bottom: 12px;
+      }
+      p {
+        margin: 0 0 20px;
+        color: #556070;
+      }
+      a {
+        color: #f88b24;
+        text-decoration: none;
+        font-weight: 600;
+      }
+    </style>
   </head>
   <body>
-    Redirecting...
+    <div class="card">
+      <h1>404</h1>
+      <p>Sorry, the page you're looking for doesn't exist.</p>
+      <a href="./">Return to Home</a>
+    </div>
   </body>
 </html>

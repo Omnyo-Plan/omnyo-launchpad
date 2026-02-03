@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { siteConfig } from "@/lib/config";
+import { Seo } from "@/seo/Seo";
+import { ROUTES } from "@/seo/seo.config";
 
 export default function Pricing() {
   const { t, language } = useLanguage();
@@ -28,29 +28,9 @@ export default function Pricing() {
     t("pricing.whoItsFor.shiftBased"),
   ];
 
-  const metaTitle = language === "en"
-    ? "Pricing - Early Access Program | Omnyo"
-    : "Τιμολόγηση - Πρόγραμμα Πρόωρης Πρόσβασης | Omnyo";
-
-  const metaDescription = language === "en"
-    ? "Join Omnyo's early access pilot program. Full features, dedicated support for early adopters."
-    : "Εγγραφείτε στο πιλοτικό πρόγραμμα πρόωρης πρόσβασης του Omnyo. Πλήρη χαρακτηριστικά, αφοσιωμένη υποστήριξη για πρώτους χρήστες.";
-
   return (
     <Layout>
-      <Helmet>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${siteConfig.url}/pricing`} />
-        <meta property="og:image" content={`${siteConfig.url}/og-image.png`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={metaTitle} />
-        <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content={`${siteConfig.url}/og-image.png`} />
-      </Helmet>
+      <Seo routeId="pricing" />
 
       {/* Hero */}
       <Section variant="hero" className="text-center">
@@ -100,7 +80,7 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Link to="/contact" className="mt-8 block">
+              <Link to={ROUTES.contact[language]} className="mt-8 block">
                 <Button variant="hero" size="xl" className="w-full">
                   {t("common.applyForEarlyAccess")}
                   <ArrowRight className="h-5 w-5" />
@@ -175,7 +155,7 @@ export default function Pricing() {
             {t("pricing.ctaSubtitle")}
           </p>
           <div className="mt-8 flex justify-center">
-            <Link to="/contact">
+            <Link to={ROUTES.contact[language]}>
               <Button variant="hero" size="xl">
                 {t("common.contactUs")}
                 <ArrowRight className="h-5 w-5" />

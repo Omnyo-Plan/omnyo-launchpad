@@ -1,10 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import { createContext, useContext, ReactNode } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type Language = "en" | "gr";
 
@@ -31,19 +26,21 @@ interface LanguageProviderProps {
 }
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    const saved = localStorage.getItem("omnyo-language");
-    return (saved as Language) || "en";
-  });
+  const location = useLocation();
+  const navigate = useNavigate();
+  const pathname = normalizePath(location.pathname);
+  const language: Language = pathname === "/el" || pathname.startsWith("/el/")
+    ? "gr"
+    : "en";
 
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem("omnyo-language", lang);
-  };
+    if (lang === language) {
+      return;
+    }
 
-  useEffect(() => {
-    document.documentElement.lang = language === "gr" ? "el" : "en";
-  }, [language]);
+    const targetPath = buildPathForLanguage(pathname, lang);
+    navigate({ pathname: targetPath, search: location.search, hash: location.hash });
+  };
 
   const t = (key: string): string => {
     const keys = key.split(".");
@@ -75,6 +72,40 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     </LanguageContext.Provider>
   );
 }
+
+const normalizePath = (pathname: string) => {
+  if (!pathname.startsWith("/")) {
+    return `/${pathname}`;
+  }
+
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    return pathname.replace(/\/+$/, "");
+  }
+
+  return pathname;
+};
+
+const stripLanguagePrefix = (pathname: string) => {
+  if (pathname === "/el") {
+    return "/";
+  }
+
+  if (pathname.startsWith("/el/")) {
+    return pathname.slice(3);
+  }
+
+  return pathname;
+};
+
+const buildPathForLanguage = (pathname: string, lang: Language) => {
+  const basePath = stripLanguagePrefix(pathname);
+
+  if (lang === "en") {
+    return basePath;
+  }
+
+  return basePath === "/" ? "/el" : `/el${basePath}`;
+};
 
 const translations = {
   en: {

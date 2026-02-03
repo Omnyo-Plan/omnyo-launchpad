@@ -7,31 +7,38 @@ import { useThemeContext } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { cn } from "@/lib/utils";
+import { ROUTES } from "@/seo/seo.config";
 import logoLight from "@/assets/omnyo-logo-light.png";
 import logoDark from "@/assets/omnyo-logo-dark.png";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useThemeContext();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const location = useLocation();
 
   const navLinks = [
-    { href: "/", label: t("nav.home") },
-    { href: "/product", label: t("nav.product") },
-    { href: "/pricing", label: t("nav.pricing") },
-    { href: "/about", label: t("nav.about") },
+    { href: ROUTES.home[language], label: t("nav.home") },
+    { href: ROUTES.product[language], label: t("nav.product") },
+    { href: ROUTES.pricing[language], label: t("nav.pricing") },
+    { href: ROUTES.about[language], label: t("nav.about") },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-lg">
-      <nav className="container mx-auto flex items-center justify-between px-4 py-4 lg:px-8 lg:py-6">
+      <nav
+        className="container mx-auto flex items-center justify-between px-4 py-4 lg:px-8 lg:py-6"
+        aria-label="Primary"
+      >
         {/* Logo */}
-        <Link to="/" className="flex items-center">
+        <Link to={ROUTES.home[language]} className="flex items-center">
           <img
             src={theme === "dark" ? logoDark : logoLight}
             alt="Omnyo"
             className="brand-logo shrink-0"
+            width={327}
+            height={108}
+            decoding="async"
           />
         </Link>
 
@@ -77,7 +84,7 @@ export function Header() {
             )}
           </Button>
 
-          <Link to="/contact" className="hidden md:block">
+          <Link to={ROUTES.contact[language]} className="hidden md:block">
             <Button variant="hero" size="default">
               {t("nav.getEarlyAccess")}
             </Button>
@@ -125,7 +132,7 @@ export function Header() {
                 </Link>
               ))}
               <Link
-                to="/contact"
+                to={ROUTES.contact[language]}
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-2"
               >

@@ -9,13 +9,13 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { FeatureCard } from "@/components/ui/feature-card";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { siteConfig } from "@/lib/config";
+import { Seo } from "@/seo/Seo";
+import { ROUTES } from "@/seo/seo.config";
 
 export default function Product() {
   const { t, language } = useLanguage();
@@ -82,16 +82,6 @@ export default function Product() {
     },
   ];
 
-  const metaTitle =
-    language === "en"
-      ? "Product - How Omnyo Works | Shift Management Features"
-      : "Προϊόν - Πώς Λειτουργεί το Omnyo | Χαρακτηριστικά Διαχείρισης Βαρδιών";
-
-  const metaDescription =
-    language === "en"
-      ? "Discover how Omnyo simplifies shift scheduling for managers and employees. Visual builder, real-time notifications, and mobile access."
-      : "Ανακαλύψτε πώς το Omnyo απλοποιεί τον προγραμματισμό βαρδιών για μάνατζερ και εργαζόμενους. Οπτικός δημιουργός, ειδοποιήσεις σε πραγματικό χρόνο και πρόσβαση από κινητό.";
-
   const days =
     language === "en"
       ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -99,19 +89,7 @@ export default function Product() {
 
   return (
     <Layout>
-      <Helmet>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${siteConfig.url}/product`} />
-        <meta property="og:image" content={`${siteConfig.url}/og-image.png`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={metaTitle} />
-        <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content={`${siteConfig.url}/og-image.png`} />
-      </Helmet>
+      <Seo routeId="product" />
 
       {/* Hero */}
       <Section variant="hero" className="text-center">
@@ -357,13 +335,13 @@ export default function Product() {
             {t("product.ctaSubtitle")}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link to="/contact">
+            <Link to={ROUTES.contact[language]}>
               <Button variant="hero" size="xl">
                 {t("common.requestEarlyAccess")}
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
-            <Link to="/pricing">
+            <Link to={ROUTES.pricing[language]}>
               <Button variant="hero-outline" size="xl">
                 {t("common.viewPricing")}
               </Button>

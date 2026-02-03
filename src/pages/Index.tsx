@@ -6,9 +6,9 @@ import { Section, SectionHeader } from "@/components/ui/section";
 import { FeatureCard, StepCard } from "@/components/ui/feature-card";
 import { WaitlistForm } from "@/components/forms/WaitlistForm";
 import { Layout } from "@/components/layout/Layout";
-import { Helmet } from "react-helmet-async";
-import { siteConfig } from "@/lib/config";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Seo } from "@/seo/Seo";
+import { ROUTES } from "@/seo/seo.config";
 import {
   Accordion,
   AccordionContent,
@@ -105,40 +105,9 @@ export default function Index() {
     { icon: Phone, text: t("home.painPoints.phoneCalls") },
   ];
 
-  const metaTitle = language === "en" 
-    ? "Omnyo - Modern Shift Management for Growing Teams"
-    : "Omnyo - Σύγχρονη Διαχείριση Βαρδιών για Αναπτυσσόμενες Ομάδες";
-  
-  const metaDescription = language === "en"
-    ? "Replace spreadsheets, paper schedules, and WhatsApp chaos with Omnyo. A smart, mobile-first shift management system for hospitality, retail, and logistics."
-    : "Αντικαταστήστε υπολογιστικά φύλλα, χάρτινα προγράμματα και χάος WhatsApp με το Omnyo. Ένα έξυπνο σύστημα διαχείρισης βαρδιών για φιλοξενία, λιανική και logistics.";
-
   return (
     <Layout>
-      <Helmet>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={siteConfig.url} />
-        <meta property="og:image" content={`${siteConfig.url}/og-image.png`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={metaTitle} />
-        <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content={`${siteConfig.url}/og-image.png`} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "Omnyo",
-            description: siteConfig.description,
-            url: siteConfig.url,
-            sameAs: [siteConfig.social.instagram, siteConfig.social.linkedin],
-            industry: "Software Development",
-          })}
-        </script>
-      </Helmet>
+      <Seo routeId="home" />
 
       {/* Hero Section */}
       <Section variant="hero" className="relative overflow-hidden pt-12 md:pt-20">
@@ -178,13 +147,13 @@ export default function Index() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
           >
-            <Link to="/contact">
+            <Link to={ROUTES.contact[language]}>
               <Button variant="hero" size="xl">
                 {t("nav.getEarlyAccess")}
                 <ArrowRight className="h-5 w-5" />
               </Button>
             </Link>
-            <Link to="/product">
+            <Link to={ROUTES.product[language]}>
               <Button variant="hero-outline" size="xl">
                 {t("common.seeHowItWorks")}
               </Button>

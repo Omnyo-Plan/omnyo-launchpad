@@ -1,0 +1,16 @@
+# Omnyo
+Omnyo is a shift scheduling and workforce management platform for businesses that run on shifts.
+
+Primary URLs:
+- https://myomnio.com/
+- https://myomnio.com/product
+- https://myomnio.com/pricing
+- https://myomnio.com/contact
+- https://myomnio.com/about
+- https://myomnio.com/el
+- https://myomnio.com/el/product
+- https://myomnio.com/el/pricing
+- https://myomnio.com/el/contact
+- https://myomnio.com/el/about
+
+Contact: contact@myomnio.com

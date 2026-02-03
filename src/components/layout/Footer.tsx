@@ -3,22 +3,23 @@ import { Instagram, Linkedin } from "lucide-react";
 import { siteConfig } from "@/lib/config";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useThemeContext } from "@/contexts/ThemeContext";
+import { ROUTES } from "@/seo/seo.config";
 import logoLight from "@/assets/omnyo-logo-light.png";
 import logoDark from "@/assets/omnyo-logo-dark.png";
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { theme } = useThemeContext();
 
   const footerLinks = {
     product: [
-      { label: t("footer.features"), href: "/product" },
-      { label: t("nav.pricing"), href: "/pricing" },
-      { label: t("footer.useCases"), href: "/product#use-cases" },
+      { label: t("footer.features"), href: ROUTES.product[language] },
+      { label: t("nav.pricing"), href: ROUTES.pricing[language] },
+      { label: t("footer.useCases"), href: `${ROUTES.product[language]}#use-cases` },
     ],
     company: [
-      { label: t("nav.about"), href: "/about" },
-      { label: t("nav.contact"), href: "/contact" },
+      { label: t("nav.about"), href: ROUTES.about[language] },
+      { label: t("nav.contact"), href: ROUTES.contact[language] },
     ],
   };
 
@@ -28,11 +29,14 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="inline-block">
+            <Link to={ROUTES.home[language]} className="inline-block">
               <img
                 src={theme === "dark" ? logoDark : logoLight}
                 alt="Omnyo"
                 className="brand-logo shrink-0"
+                width={327}
+                height={108}
+                decoding="async"
               />
             </Link>
             <p className="mt-4 max-w-md text-muted-foreground">

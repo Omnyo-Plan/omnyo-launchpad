@@ -1,0 +1,3 @@
+Contact: mailto:contact@myomnio.com
+Preferred-Languages: en, el
+Canonical: https://myomnio.com/.well-known/security.txt

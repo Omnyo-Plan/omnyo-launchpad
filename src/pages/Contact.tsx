@@ -1,41 +1,20 @@
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Section } from "@/components/ui/section";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { WaitlistForm } from "@/components/forms/WaitlistForm";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { siteConfig } from "@/lib/config";
+import { Seo } from "@/seo/Seo";
 
 const CONTACT_EMAIL = "contact@myomnio.com";
 
 export default function Contact() {
-  const { t, language } = useLanguage();
-
-  const metaTitle = language === "en"
-    ? "Contact - Get in Touch | Omnyo"
-    : "Επικοινωνία - Επικοινωνήστε Μαζί Μας | Omnyo";
-
-  const metaDescription = language === "en"
-    ? "Contact Omnyo to learn more about our shift management platform or join our early access waitlist."
-    : "Επικοινωνήστε με το Omnyo για να μάθετε περισσότερα για την πλατφόρμα διαχείρισης βαρδιών ή εγγραφείτε στη λίστα αναμονής πρόωρης πρόσβασης.";
+  const { t } = useLanguage();
 
   return (
     <Layout>
-      <Helmet>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${siteConfig.url}/contact`} />
-        <meta property="og:image" content={`${siteConfig.url}/og-image.png`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={metaTitle} />
-        <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content={`${siteConfig.url}/og-image.png`} />
-      </Helmet>
+      <Seo routeId="contact" />
 
       {/* Hero */}
       <Section variant="hero" className="text-center">

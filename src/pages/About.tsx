@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Seo } from "@/seo/Seo";
+import { ROUTES } from "@/seo/seo.config";
 
 export default function About() {
   const { t, language } = useLanguage();
@@ -26,29 +27,9 @@ export default function About() {
     },
   ];
 
-  const metaTitle = language === "en"
-    ? "About - Our Mission | Omnyo"
-    : "Σχετικά - Η Αποστολή Μας | Omnyo";
-
-  const metaDescription = language === "en"
-    ? "Learn about Omnyo's mission to modernize shift scheduling for businesses that run on shifts. Our values: simplicity, fairness, and flexibility."
-    : "Μάθετε για την αποστολή του Omnyo να εκσυγχρονίσει τον προγραμματισμό βαρδιών για επιχειρήσεις που λειτουργούν με βάρδιες. Οι αξίες μας: απλότητα, δικαιοσύνη και ευελιξία.";
-
   return (
     <Layout>
-      <Helmet>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${siteConfig.url}/about`} />
-        <meta property="og:image" content={`${siteConfig.url}/og-image.png`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={metaTitle} />
-        <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content={`${siteConfig.url}/og-image.png`} />
-      </Helmet>
+      <Seo routeId="about" />
 
       {/* Hero */}
       <Section variant="hero" className="text-center">
@@ -160,7 +141,7 @@ export default function About() {
             {t("about.ctaSubtitle")}
           </p>
           <div className="mt-8 flex justify-center">
-            <Link to="/contact">
+            <Link to={ROUTES.contact[language]}>
               <Button variant="hero" size="xl">
                 {t("common.joinEarlyAccess")}
                 <ArrowRight className="h-5 w-5" />
