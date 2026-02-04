@@ -10,7 +10,7 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export function useLanguage() {
@@ -29,9 +29,8 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const pathname = normalizePath(location.pathname);
-  const language: Language = pathname === "/el" || pathname.startsWith("/el/")
-    ? "gr"
-    : "en";
+  const language: Language =
+    pathname === "/el" || pathname.startsWith("/el/") ? "gr" : "en";
 
   const setLanguage = (lang: Language) => {
     if (lang === language) {
@@ -39,7 +38,11 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     }
 
     const targetPath = buildPathForLanguage(pathname, lang);
-    navigate({ pathname: targetPath, search: location.search, hash: location.hash });
+    navigate({
+      pathname: targetPath,
+      search: location.search,
+      hash: location.hash,
+    });
   };
 
   const t = (key: string): string => {
@@ -376,8 +379,7 @@ const translations = {
         "Join our waitlist for early access and product updates.",
       otherWays: "Other ways to reach us",
       responseTime: "Response time",
-      responseTimeText:
-        "We typically respond within 24 hours.",
+      responseTimeText: "We typically respond within 24 hours.",
       form: {
         name: "Name",
         namePlaceholder: "Your name",

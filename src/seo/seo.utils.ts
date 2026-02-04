@@ -14,7 +14,8 @@ export const OG_LOCALES = {
 
 export function resolveSiteOrigin() {
   const envUrl = import.meta.env.VITE_SITE_URL;
-  const fallback = typeof window !== "undefined" ? window.location.origin : DEFAULT_SITE_URL;
+  const fallback =
+    typeof window !== "undefined" ? window.location.origin : DEFAULT_SITE_URL;
   const rawUrl = envUrl || fallback;
 
   try {

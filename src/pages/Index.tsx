@@ -1,6 +1,20 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Users, Bell, Clock, Shield, Table2, MessageSquare, Phone, Coffee, ShoppingBag, Package, LucideIcon } from "lucide-react";
+import {
+  ArrowRight,
+  Calendar,
+  Users,
+  Bell,
+  Clock,
+  Shield,
+  Table2,
+  MessageSquare,
+  Phone,
+  Coffee,
+  ShoppingBag,
+  Package,
+  LucideIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { FeatureCard, StepCard } from "@/components/ui/feature-card";
@@ -62,23 +76,24 @@ export default function Index() {
     },
   ];
 
-  const industries: { name: string; description: string; icon: LucideIcon }[] = [
-    {
-      name: t("home.industries.hospitality.name"),
-      description: t("home.industries.hospitality.description"),
-      icon: Coffee,
-    },
-    {
-      name: t("home.industries.retail.name"),
-      description: t("home.industries.retail.description"),
-      icon: ShoppingBag,
-    },
-    {
-      name: t("home.industries.logistics.name"),
-      description: t("home.industries.logistics.description"),
-      icon: Package,
-    },
-  ];
+  const industries: { name: string; description: string; icon: LucideIcon }[] =
+    [
+      {
+        name: t("home.industries.hospitality.name"),
+        description: t("home.industries.hospitality.description"),
+        icon: Coffee,
+      },
+      {
+        name: t("home.industries.retail.name"),
+        description: t("home.industries.retail.description"),
+        icon: ShoppingBag,
+      },
+      {
+        name: t("home.industries.logistics.name"),
+        description: t("home.industries.logistics.description"),
+        icon: Package,
+      },
+    ];
 
   const faqs = [
     {
@@ -110,7 +125,10 @@ export default function Index() {
       <Seo routeId="home" />
 
       {/* Hero Section */}
-      <Section variant="hero" className="relative overflow-hidden pt-12 md:pt-20">
+      <Section
+        variant="hero"
+        className="relative overflow-hidden pt-12 md:pt-20"
+      >
         <div className="relative z-10 flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -173,7 +191,9 @@ export default function Index() {
                 className="flex items-center gap-2 rounded-full border border-border bg-background/50 px-4 py-2 backdrop-blur-sm"
               >
                 <industry.icon className="h-5 w-5 text-primary" />
-                <span>{t("home.builtFor")} {industry.name}</span>
+                <span>
+                  {t("home.builtFor")} {industry.name}
+                </span>
               </div>
             ))}
           </motion.div>
@@ -226,7 +246,12 @@ export default function Index() {
         <SectionHeader title={t("home.stepsTitle")} />
         <div className="mx-auto max-w-xl">
           {steps.map((step, i) => (
-            <StepCard key={step.title} number={i + 1} {...step} delay={i * 0.15} />
+            <StepCard
+              key={step.title}
+              number={i + 1}
+              {...step}
+              delay={i * 0.15}
+            />
           ))}
         </div>
       </Section>
@@ -249,7 +274,9 @@ export default function Index() {
               className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 text-center shadow-card transition-shadow hover:shadow-card-hover"
             >
               <industry.icon className="mb-4 mx-auto h-12 w-12 text-primary" />
-              <h3 className="mb-2 text-xl font-semibold text-foreground">{industry.name}</h3>
+              <h3 className="mb-2 text-xl font-semibold text-foreground">
+                {industry.name}
+              </h3>
               <p className="text-muted-foreground">{industry.description}</p>
             </motion.div>
           ))}

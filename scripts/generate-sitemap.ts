@@ -1,7 +1,12 @@
 import { mkdirSync, writeFileSync } from "fs";
 import path from "path";
 import { loadEnv } from "vite";
-import { ROUTES, SEO_CONFIG, type Language, type RouteId } from "../src/seo/seo.config";
+import {
+  ROUTES,
+  SEO_CONFIG,
+  type Language,
+  type RouteId,
+} from "../src/seo/seo.config";
 
 const FALLBACK_SITE_URL = "https://myomnio.com";
 

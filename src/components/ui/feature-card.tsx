@@ -11,7 +11,13 @@ interface FeatureCardProps {
   delay?: number;
 }
 
-export function FeatureCard({ icon: Icon, title, description, className, delay = 0 }: FeatureCardProps) {
+export function FeatureCard({
+  icon: Icon,
+  title,
+  description,
+  className,
+  delay = 0,
+}: FeatureCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -21,13 +27,15 @@ export function FeatureCard({ icon: Icon, title, description, className, delay =
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className={cn(
         "group relative rounded-2xl border border-border bg-card p-6 shadow-card transition-shadow hover:shadow-card-hover md:p-8",
-        className
+        className,
       )}
     >
       <div className="mb-4 inline-flex rounded-xl bg-primary/10 p-3 text-primary">
         <Icon className="h-6 w-6" />
       </div>
-      <h3 className="mb-2 text-lg font-semibold text-foreground md:text-xl">{title}</h3>
+      <h3 className="mb-2 text-lg font-semibold text-foreground md:text-xl">
+        {title}
+      </h3>
       <p className="text-muted-foreground">{description}</p>
     </motion.div>
   );
@@ -40,7 +48,12 @@ interface StepCardProps {
   delay?: number;
 }
 
-export function StepCard({ number, title, description, delay = 0 }: StepCardProps) {
+export function StepCard({
+  number,
+  title,
+  description,
+  delay = 0,
+}: StepCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -53,9 +66,7 @@ export function StepCard({ number, title, description, delay = 0 }: StepCardProp
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
           {number}
         </div>
-        {number < 3 && (
-          <div className="mt-4 h-full w-px bg-border" />
-        )}
+        {number < 3 && <div className="mt-4 h-full w-px bg-border" />}
       </div>
       <div className="pb-12">
         <h3 className="mb-2 text-lg font-semibold text-foreground">{title}</h3>

@@ -50,7 +50,7 @@ export function Header() {
                 variant="nav"
                 className={cn(
                   "relative",
-                  location.pathname === link.href && "text-foreground"
+                  location.pathname === link.href && "text-foreground",
                 )}
               >
                 {link.label}
@@ -69,7 +69,7 @@ export function Header() {
         {/* Right side actions */}
         <div className="flex items-center gap-2">
           <LanguageToggle className="hidden sm:flex" />
-          
+
           <Button
             variant="ghost"
             size="icon"
@@ -98,7 +98,11 @@ export function Header() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </Button>
         </div>
       </nav>
@@ -125,7 +129,7 @@ export function Header() {
                     "rounded-lg px-4 py-3 text-base font-medium transition-colors",
                     location.pathname === link.href
                       ? "bg-muted text-foreground"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground",
                   )}
                 >
                   {link.label}

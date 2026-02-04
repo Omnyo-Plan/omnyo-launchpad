@@ -15,9 +15,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const themeState = useTheme();
 
   return (
-    <ThemeContext.Provider value={themeState}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={themeState}>{children}</ThemeContext.Provider>
   );
 }
 

@@ -15,7 +15,10 @@ export function Footer() {
     product: [
       { label: t("footer.features"), href: ROUTES.product[language] },
       { label: t("nav.pricing"), href: ROUTES.pricing[language] },
-      { label: t("footer.useCases"), href: `${ROUTES.product[language]}#use-cases` },
+      {
+        label: t("footer.useCases"),
+        href: `${ROUTES.product[language]}#use-cases`,
+      },
     ],
     company: [
       { label: t("nav.about"), href: ROUTES.about[language] },

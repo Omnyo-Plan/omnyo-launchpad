@@ -43,7 +43,9 @@ export default function Contact() {
               viewport={{ once: true }}
               className="lg:col-span-3"
             >
-              <h2 className="mb-6 text-2xl font-bold text-foreground">{t("contact.sendMessage")}</h2>
+              <h2 className="mb-6 text-2xl font-bold text-foreground">
+                {t("contact.sendMessage")}
+              </h2>
               <ContactForm />
             </motion.div>
 

@@ -35,7 +35,7 @@ export default function Product() {
       icon: Bell,
       title: t("product.managerFeatures.automatedNotifications.title"),
       description: t(
-        "product.managerFeatures.automatedNotifications.description"
+        "product.managerFeatures.automatedNotifications.description",
       ),
     },
   ];

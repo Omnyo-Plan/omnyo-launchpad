@@ -23,7 +23,14 @@ export function Seo({ routeId }: SeoProps) {
 
   const robotsDirectives = buildRobotsDirectives(entry.robots);
   const hreflangLinks = buildHreflangLinks(routeId);
-  const structuredData = buildStructuredData(routeId, language, canonicalUrl, siteUrl, logoUrl, entry.description);
+  const structuredData = buildStructuredData(
+    routeId,
+    language,
+    canonicalUrl,
+    siteUrl,
+    logoUrl,
+    entry.description,
+  );
 
   const googleVerification = import.meta.env.VITE_GOOGLE_SITE_VERIFICATION;
   const bingVerification = import.meta.env.VITE_BING_SITE_VERIFICATION;
@@ -31,22 +38,34 @@ export function Seo({ routeId }: SeoProps) {
   const alternateLocale = language === "en" ? "el_GR" : "en_US";
 
   return (
-    <Helmet
-      htmlAttributes={{ lang: LANGUAGE_TAGS[language] }}
-    >
+    <Helmet htmlAttributes={{ lang: LANGUAGE_TAGS[language] }}>
       <title>{entry.title}</title>
       <meta name="description" content={entry.description} />
       <link rel="canonical" href={canonicalUrl} />
 
-      {isIndexable && hreflangLinks.map((link) => (
-        <link key={link.hrefLang} rel="alternate" hrefLang={link.hrefLang} href={link.href} />
-      ))}
+      {isIndexable &&
+        hreflangLinks.map((link) => (
+          <link
+            key={link.hrefLang}
+            rel="alternate"
+            hrefLang={link.hrefLang}
+            href={link.href}
+          />
+        ))}
 
       <meta name="robots" content={robotsDirectives} />
       <meta name="googlebot" content={robotsDirectives} />
       <meta name="bingbot" content={robotsDirectives} />
-      <meta name="theme-color" content={THEME_COLOR} media="(prefers-color-scheme: light)" />
-      <meta name="theme-color" content={THEME_COLOR} media="(prefers-color-scheme: dark)" />
+      <meta
+        name="theme-color"
+        content={THEME_COLOR}
+        media="(prefers-color-scheme: light)"
+      />
+      <meta
+        name="theme-color"
+        content={THEME_COLOR}
+        media="(prefers-color-scheme: dark)"
+      />
 
       {googleVerification && (
         <meta name="google-site-verification" content={googleVerification} />
@@ -75,10 +94,7 @@ export function Seo({ routeId }: SeoProps) {
       <meta name="twitter:image" content={twitterImageUrl} />
 
       {structuredData.map((schema, index) => (
-        <script
-          key={`schema-${index}`}
-          type="application/ld+json"
-        >
+        <script key={`schema-${index}`} type="application/ld+json">
           {JSON.stringify(schema)}
         </script>
       ))}

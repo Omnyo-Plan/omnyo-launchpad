@@ -11,7 +11,10 @@ export function LanguageToggle({ className }: LanguageToggleProps) {
 
   return (
     <div
-      className={cn("flex items-center rounded-lg border border-border bg-muted/50 p-0.5", className)}
+      className={cn(
+        "flex items-center rounded-lg border border-border bg-muted/50 p-0.5",
+        className,
+      )}
       role="radiogroup"
       aria-label="Select language"
     >
@@ -23,7 +26,7 @@ export function LanguageToggle({ className }: LanguageToggleProps) {
           "h-7 px-2.5 text-xs font-medium transition-all",
           language === "en"
             ? "bg-background text-foreground shadow-sm"
-            : "text-muted-foreground hover:text-foreground hover:bg-transparent"
+            : "text-muted-foreground hover:text-foreground hover:bg-transparent",
         )}
         role="radio"
         aria-checked={language === "en"}
@@ -39,7 +42,7 @@ export function LanguageToggle({ className }: LanguageToggleProps) {
           "h-7 px-2.5 text-xs font-medium transition-all",
           language === "gr"
             ? "bg-background text-foreground shadow-sm"
-            : "text-muted-foreground hover:text-foreground hover:bg-transparent"
+            : "text-muted-foreground hover:text-foreground hover:bg-transparent",
         )}
         role="radio"
         aria-checked={language === "gr"}

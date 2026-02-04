@@ -9,7 +9,10 @@ export function Analytics() {
 
   return (
     <Helmet>
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+      />
       <script>
         {`
           window.dataLayer = window.dataLayer || [];

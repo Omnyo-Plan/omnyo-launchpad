@@ -55,7 +55,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-foreground md:text-3xl">{t("about.ourStory")}</h2>
+            <h2 className="text-2xl font-bold text-foreground md:text-3xl">
+              {t("about.ourStory")}
+            </h2>
             <div className="mt-6 space-y-4 text-lg text-muted-foreground">
               <p>{t("about.storyParagraphs.p1")}</p>
               <p>{t("about.storyParagraphs.p2")}</p>
@@ -82,7 +84,9 @@ export default function About() {
               transition={{ delay: i * 0.1 }}
               className="rounded-2xl border border-border bg-card p-8"
             >
-              <h3 className="mb-3 text-xl font-semibold text-foreground">{value.title}</h3>
+              <h3 className="mb-3 text-xl font-semibold text-foreground">
+                {value.title}
+              </h3>
               <p className="text-muted-foreground">{value.description}</p>
             </motion.div>
           ))}
@@ -97,7 +101,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-foreground md:text-3xl">{t("about.followJourney")}</h2>
+            <h2 className="text-2xl font-bold text-foreground md:text-3xl">
+              {t("about.followJourney")}
+            </h2>
             <p className="mt-4 text-muted-foreground">
               {t("about.followJourneySubtitle")}
             </p>

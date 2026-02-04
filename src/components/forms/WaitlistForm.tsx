@@ -19,7 +19,7 @@ export function WaitlistForm({ variant = "default" }: WaitlistFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!email || !email.includes("@")) {
       toast.error(t("waitlist.invalidEmail"));
       return;
@@ -63,7 +63,9 @@ export function WaitlistForm({ variant = "default" }: WaitlistFormProps) {
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
           <Check className="h-4 w-4" />
         </div>
-        <p className="font-medium text-foreground">{t("waitlist.onWaitlist")}</p>
+        <p className="font-medium text-foreground">
+          {t("waitlist.onWaitlist")}
+        </p>
       </motion.div>
     );
   }

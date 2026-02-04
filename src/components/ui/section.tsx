@@ -9,7 +9,12 @@ interface SectionProps {
   variant?: "default" | "muted" | "hero";
 }
 
-export function Section({ children, className, id, variant = "default" }: SectionProps) {
+export function Section({
+  children,
+  className,
+  id,
+  variant = "default",
+}: SectionProps) {
   return (
     <section
       id={id}
@@ -17,7 +22,7 @@ export function Section({ children, className, id, variant = "default" }: Sectio
         "py-16 md:py-24 lg:py-32",
         variant === "muted" && "bg-surface-subtle",
         variant === "hero" && "gradient-hero",
-        className
+        className,
       )}
     >
       <div className="container mx-auto px-4 lg:px-8">{children}</div>
@@ -32,7 +37,12 @@ interface SectionHeaderProps {
   className?: string;
 }
 
-export function SectionHeader({ title, subtitle, align = "center", className }: SectionHeaderProps) {
+export function SectionHeader({
+  title,
+  subtitle,
+  align = "center",
+  className,
+}: SectionHeaderProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -42,7 +52,7 @@ export function SectionHeader({ title, subtitle, align = "center", className }: 
       className={cn(
         "mb-12 md:mb-16",
         align === "center" && "text-center",
-        className
+        className,
       )}
     >
       <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">

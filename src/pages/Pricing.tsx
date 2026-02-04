@@ -62,14 +62,22 @@ export default function Pricing() {
             className="overflow-hidden rounded-2xl border border-border bg-card shadow-lg"
           >
             <div className="border-b border-border bg-primary/5 p-8 text-center">
-              <h2 className="text-2xl font-bold text-foreground">{t("pricing.pilotProgram")}</h2>
-              <p className="mt-2 text-muted-foreground">{t("pricing.fullAccess")}</p>
+              <h2 className="text-2xl font-bold text-foreground">
+                {t("pricing.pilotProgram")}
+              </h2>
+              <p className="mt-2 text-muted-foreground">
+                {t("pricing.fullAccess")}
+              </p>
               <div className="mt-6">
-                <span className="text-4xl font-bold text-foreground">{t("common.contactUs")}</span>
+                <span className="text-4xl font-bold text-foreground">
+                  {t("common.contactUs")}
+                </span>
               </div>
             </div>
             <div className="p-8">
-              <h3 className="mb-4 font-semibold text-foreground">{t("pricing.whatsIncluded")}</h3>
+              <h3 className="mb-4 font-semibold text-foreground">
+                {t("pricing.whatsIncluded")}
+              </h3>
               <ul className="space-y-3">
                 {pilotIncludes.map((item) => (
                   <li key={item} className="flex items-start gap-3">

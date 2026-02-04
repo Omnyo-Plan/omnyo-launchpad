@@ -109,10 +109,10 @@ export function ContactForm() {
         <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
           <Check className="h-8 w-8" />
         </div>
-        <h3 className="mb-2 text-2xl font-semibold text-foreground">{t("contact.form.success")}</h3>
-        <p className="text-muted-foreground">
-          {t("contact.responseTimeText")}
-        </p>
+        <h3 className="mb-2 text-2xl font-semibold text-foreground">
+          {t("contact.form.success")}
+        </h3>
+        <p className="text-muted-foreground">{t("contact.responseTimeText")}</p>
       </motion.div>
     );
   }
@@ -142,7 +142,9 @@ export function ContactForm() {
             type="email"
             placeholder={t("contact.form.emailPlaceholder")}
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
             required
             aria-required="true"
           />
@@ -156,7 +158,9 @@ export function ContactForm() {
             id="company"
             placeholder={t("contact.form.companyPlaceholder")}
             value={formData.company}
-            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, company: e.target.value })
+            }
           />
         </div>
         <div className="space-y-2">
@@ -165,7 +169,10 @@ export function ContactForm() {
             value={formData.role}
             onValueChange={(value) => setFormData({ ...formData, role: value })}
           >
-            <SelectTrigger id="role" aria-label={t("contact.form.rolePlaceholder")}>
+            <SelectTrigger
+              id="role"
+              aria-label={t("contact.form.rolePlaceholder")}
+            >
               <SelectValue placeholder={t("contact.form.rolePlaceholder")} />
             </SelectTrigger>
             <SelectContent>
@@ -183,9 +190,14 @@ export function ContactForm() {
         <Label htmlFor="teamSize">{t("contact.form.teamSize")}</Label>
         <Select
           value={formData.teamSize}
-          onValueChange={(value) => setFormData({ ...formData, teamSize: value })}
+          onValueChange={(value) =>
+            setFormData({ ...formData, teamSize: value })
+          }
         >
-          <SelectTrigger id="teamSize" aria-label={t("contact.form.teamSizePlaceholder")}>
+          <SelectTrigger
+            id="teamSize"
+            aria-label={t("contact.form.teamSizePlaceholder")}
+          >
             <SelectValue placeholder={t("contact.form.teamSizePlaceholder")} />
           </SelectTrigger>
           <SelectContent>
@@ -207,7 +219,9 @@ export function ContactForm() {
           placeholder={t("contact.form.messagePlaceholder")}
           rows={4}
           value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, message: e.target.value })
+          }
           className="resize-none"
           required
           aria-required="true"
@@ -224,7 +238,13 @@ export function ContactForm() {
         />
       </div>
 
-      <Button type="submit" variant="hero" size="lg" disabled={isLoading} className="w-full">
+      <Button
+        type="submit"
+        variant="hero"
+        size="lg"
+        disabled={isLoading}
+        className="w-full"
+      >
         {isLoading ? (
           <Loader2 className="h-4 w-4 animate-spin" />
         ) : (
