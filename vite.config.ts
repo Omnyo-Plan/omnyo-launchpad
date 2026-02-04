@@ -24,6 +24,7 @@ export default defineConfig(({ mode }) => {
       react(),
       mode === "development" && componentTagger(),
       mode === "production" &&
+        env.VITE_PRERENDER !== "false" &&
         prerender({
           routes: [
             ROUTES.home.en,
@@ -41,7 +42,12 @@ export default defineConfig(({ mode }) => {
           ],
           renderer: new PuppeteerRenderer({
             renderAfterDocumentEvent: "prerender-ready",
-            maxConcurrentRoutes: 4,
+            maxConcurrentRoutes: 2,
+            skipThirdPartyRequests: true,
+            navigationOptions: {
+              waitUntil: "domcontentloaded",
+              timeout: 45000,
+            },
           }),
         }),
     ].filter(Boolean),
